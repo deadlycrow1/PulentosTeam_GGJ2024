@@ -4,31 +4,43 @@ using NaughtyAttributes;
 
 [ExecuteInEditMode]
 public class TerrainRandomizer : MonoBehaviour {
+    [BoxGroup("NO MOVER ESTOS")]
     public int width = 256;
+    [BoxGroup("NO MOVER ESTOS")]
     public int length = 256;
+    [BoxGroup("NO MOVER ESTOS")]
     public int height = 256;
-    [Space()]
+    [BoxGroup("Parametros para editar")]
     public int seed = 1;
-    [Space()]
+    [BoxGroup("Parametros para editar")]
     public int octaves = 4;
+
+    [BoxGroup("Parametros para editar")]
     [Range(0.05f, 0.75f)]
     public float octavesIncrementalVariance = 0.3f;
+    [BoxGroup("Parametros para editar")]
     [Range(1f, 100f)]
     public float scale = 20f;
 
     float curOctaveVariance = 1f;
     private Terrain cachedTerrain;
 
+    [BoxGroup("Parametros para editar")]
     public bool circularFade;
+
+    [BoxGroup("Parametros para editar")]
     [Range(4f, 0.1f)]
     public float circleRadius = 1f;
 
+    [BoxGroup("Parametros para editar")]
     [Range(0f, 1f)]
     public float circularFadeExtraOffset = 0.3f;
 
+    [BoxGroup("Parametros para editar")]
     [Range(0f, 1f)]
     public float circularFadePower = 0.3f;
 
+    [BoxGroup("Parametros para editar")]
     public float waterHeightOffset = 25f;
 
 
