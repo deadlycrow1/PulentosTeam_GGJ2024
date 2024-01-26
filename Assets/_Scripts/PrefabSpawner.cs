@@ -8,6 +8,7 @@ public class PrefabSpawner : ScriptableObject
     public int targetAmount;
     public float minimumDistance = 0.1f;
     public Vector2 scaleRange = new Vector2(0.8f,1.2f);
+    public Vector2 verticalScaleRange = new Vector2(0.7f, 1.5f);
     public Vector3 spawnOffset;
     public bool alignToSurface;
     [Range(0f,1f)]

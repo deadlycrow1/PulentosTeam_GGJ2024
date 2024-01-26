@@ -39,8 +39,16 @@ public class RandomSpawner : MonoBehaviour {
                                     if (cachedParent != null) {
                                         go.transform.parent = cachedParent;
                                     }
+
                                     go.transform.localScale =
                                         Vector3.one * Random.Range(spawners[i].scaleRange.x, spawners[i].scaleRange.y);
+
+                                    float modY = Random.Range(spawners[i].verticalScaleRange.x, spawners[i].verticalScaleRange.y);
+                                    Vector3 modifiedHeightScale = go.transform.localScale;
+
+                                    modifiedHeightScale.y *= modY;
+
+                                    go.transform.localScale = modifiedHeightScale;
 
                                     if (spawners[i].alignToSurface) {
                                         Quaternion tRot = Quaternion.FromToRotation(go.transform.up, hit.normal);

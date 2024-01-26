@@ -19,7 +19,8 @@ MonoBehaviour:
   targetAmount: 9000
   minimumDistance: 0.1
   scaleRange: {x: 0.8, y: 3}
-  spawnOffset: {x: 0, y: 0, z: 0}
+  verticalScaleRange: {x: 0.7, y: 1.5}
+  spawnOffset: {x: 0, y: -0.22, z: 0}
   alignToSurface: 1
   alignmentRate: 0.5
   discardXYAxis: 0

@@ -381,7 +381,7 @@ MonoBehaviour:
   width: 256
   length: 256
   height: 256
-  seed: 9894
+  seed: 1144
   octaves: 5
   octavesIncrementalVariance: 0.191
   scale: 12.8
@@ -822,17 +822,17 @@ PrefabInstance:
     - target: {fileID: 5860873400588183650, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 117.21675
+      value: 105.8921
       objectReference: {fileID: 0}
     - target: {fileID: 5860873400588183650, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 49.388786
+      value: 46.23596
       objectReference: {fileID: 0}
     - target: {fileID: 5860873400588183650, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 98.25038
+      value: 90.726585
       objectReference: {fileID: 0}
     - target: {fileID: 5860873400588183650, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
