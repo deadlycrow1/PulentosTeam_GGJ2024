@@ -42,7 +42,13 @@ public class TerrainRandomizer : MonoBehaviour {
 
     [BoxGroup("Parametros para editar")]
     public float waterHeightOffset = 25f;
-
+    [BoxGroup("Parametros para editar")]
+    [Range(0.001f, 1f)]
+    public float grassNoiseScale = 0.5f;
+    [BoxGroup("Parametros para editar")]
+    [Range(0.001f, 1f)]
+    public float grassRate = 0.5f;
+    
 
     [Button("Randomize Terrain")]
     public void GenerateRandomTerrain() {
@@ -68,9 +74,7 @@ public class TerrainRandomizer : MonoBehaviour {
         ResetDefaults();
         GenerateSplatMap();
     }
-    private void Update() {
-
-    }
+    
     TerrainData RandomizeTerrain(TerrainData tData) {
         seed = Random.Range(1, 9999);
         tData.heightmapResolution = width + 1;
@@ -191,9 +195,9 @@ public class TerrainRandomizer : MonoBehaviour {
                 // Note "steepness" is unbounded, so we "normalise" it by dividing by the extent of heightmap height and scale factor
                 // Subtract result from 1.0 to give greater weighting to flat surfaces
 
-                splatWeights[2] = (height > waterHeightOffset + 1f ? 1f -
+                splatWeights[2] = (Mathf.PerlinNoise(x * grassNoiseScale, y * grassNoiseScale) < grassRate ? 1f : 0f) * (height > waterHeightOffset + 1f ? 1f -
                     Mathf.Clamp01(
-                        steepness * steepness * 1.6f / (cachedTerrain.terrainData.heightmapResolution / 5.0f)) : 0f) * 40f;
+                        steepness * steepness * 0.1f / (cachedTerrain.terrainData.heightmapResolution / 2.0f)) : 0f) * 20f;
 
                 // ROCA
 
