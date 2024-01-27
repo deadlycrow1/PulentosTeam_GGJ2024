@@ -4,6 +4,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    public static PlayerController instance;
     public bool isGrounded;
     public bool isDashing;
     private Rigidbody playerRb;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour {
     CapsuleCollider capsuleCollider;
 
     void Awake() {
+        instance = this;
         t = this.transform;
         playerRb = GetComponent<Rigidbody>();
         cachedCam = Camera.main.transform;
