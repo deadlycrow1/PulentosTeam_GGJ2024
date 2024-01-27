@@ -15,14 +15,14 @@ MonoBehaviour:
   groundTypeIndex: 2
   prefabs:
   - {fileID: 4326792997143558968, guid: 8888be78756d2b74abdc2e09c0133cf8, type: 3}
-  targetAmount: 0
-  minimumDistance: 0.1
+  targetAmount: 500
+  minimumDistance: 3
   scaleRange: {x: 0.8, y: 1.2}
   verticalScaleRange: {x: 0.7, y: 1.5}
-  spawnOffset: {x: 0, y: 0, z: 0}
-  alignToSurface: 0
-  alignmentRate: 1
+  spawnOffset: {x: 0, y: -0.1, z: 0}
+  alignToSurface: 1
+  alignmentRate: 0.2
   discardXYAxis: 0
-  randomizeRotation: 0
-  randomRotationAxis: {x: 0, y: 0, z: 0}
+  randomizeRotation: 1
+  randomRotationAxis: {x: 0, y: 1, z: 0}
   parentName: ARBOLES

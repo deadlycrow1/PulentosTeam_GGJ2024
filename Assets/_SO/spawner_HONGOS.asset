@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44be3f78f52f4964e98658f95ed6d905, type: 3}
+  m_Name: spawner_HONGOS
+  m_EditorClassIdentifier: 
+  groundTypeIndex: 2
+  prefabs:
+  - {fileID: 5229869994821361081, guid: ce51fd37ef9f4894391e5f403e715b3d, type: 3}
+  - {fileID: 9073505388429932964, guid: 29458f21d60de1f44b40143a549923fb, type: 3}
+  - {fileID: 7129372859612587676, guid: 8a3e4147e2eb4394abc4f3dc6865e54d, type: 3}
+  targetAmount: 200
+  minimumDistance: 0.1
+  scaleRange: {x: 0.8, y: 3}
+  verticalScaleRange: {x: 0.7, y: 1.5}
+  spawnOffset: {x: 0, y: -0.2, z: 0}
+  alignToSurface: 1
+  alignmentRate: 0.8
+  discardXYAxis: 0
+  randomizeRotation: 1
+  randomRotationAxis: {x: 0, y: 1, z: 0}
+  parentName: HONGOS

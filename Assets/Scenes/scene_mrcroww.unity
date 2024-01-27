@@ -7994,7 +7994,7 @@ MonoBehaviour:
   width: 256
   length: 256
   height: 256
-  seed: 4819
+  seed: 3037
   octaves: 5
   octavesIncrementalVariance: 0.191
   scale: 12.8
@@ -47313,6 +47313,17 @@ PrefabInstance:
       propertyPath: cachedTerrain
       value: 
       objectReference: {fileID: 369171694}
+    - target: {fileID: 7493960909124378459, guid: a9d20de47fe3c99479765508bca83cd6,
+        type: 3}
+      propertyPath: spawners.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493960909124378459, guid: a9d20de47fe3c99479765508bca83cd6,
+        type: 3}
+      propertyPath: spawners.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 92461bd2a0209124ba3c294aa462b758,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

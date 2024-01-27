@@ -22,8 +22,8 @@ MonoBehaviour:
   verticalScaleRange: {x: 0.7, y: 1.5}
   spawnOffset: {x: 0, y: -0.22, z: 0}
   alignToSurface: 1
-  alignmentRate: 0.5
+  alignmentRate: 0.75
   discardXYAxis: 0
-  randomizeRotation: 0
-  randomRotationAxis: {x: 0, y: 0, z: 0}
+  randomizeRotation: 1
+  randomRotationAxis: {x: 0, y: 1, z: 0}
   parentName: PASTO
