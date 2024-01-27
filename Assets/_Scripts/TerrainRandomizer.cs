@@ -4,6 +4,7 @@ using NaughtyAttributes;
 
 [ExecuteInEditMode]
 public class TerrainRandomizer : MonoBehaviour {
+    public static TerrainRandomizer instance;
     [BoxGroup("NO MOVER ESTOS")]
     public int width = 256;
     [BoxGroup("NO MOVER ESTOS")]
@@ -64,11 +65,15 @@ public class TerrainRandomizer : MonoBehaviour {
     [Range(0f, 1f)]
     public float blurIntensity = 0.3f;
 
+    [BoxGroup("Parametros para editar")]
+    public TerrainGenerationProfile profileOverride;
+
     [Button("Randomize Terrain")]
     public void GenerateRandomTerrain() {
         if (randomizeSeed) {
             seed = Random.Range(1, 1000000);
         }
+        ProcessProfileOverride();
         Random.InitState(seed);
         if (!cachedTerrain) {
             cachedTerrain = GetComponent<Terrain>();
@@ -87,11 +92,19 @@ public class TerrainRandomizer : MonoBehaviour {
         ResetDefaults();
         GenerateSplatMap();
     }
-
+    public static void GenerateTerrainRandomExternal(TerrainGenerationProfile newProfile) {
+        if (instance == null) {
+            //Debug.LogError("No existe instancia de randomizador de terrain!!");
+            instance = FindObjectOfType<TerrainRandomizer>();
+        }
+        instance.profileOverride = newProfile;
+        instance.GenerateRandomTerrain();
+    }
     private void Awake() {
         if (randomizeSeed) {
             seed = Random.Range(1, 1000000);
         }
+        ProcessProfileOverride();
         Random.InitState(seed);
         cachedTerrain = GetComponent<Terrain>();
         cachedTerrain.terrainData = RandomizeTerrain(cachedTerrain.terrainData);
@@ -108,7 +121,30 @@ public class TerrainRandomizer : MonoBehaviour {
         ResetDefaults();
         GenerateSplatMap();
     }
-    
+    private void ProcessProfileOverride() {
+        if (profileOverride == null) return;
+        randomizeSeed = profileOverride.randomizeSeed;
+        seed = profileOverride.seed;
+        if (randomizeSeed) {
+            seed = Random.Range(1, 1000000);
+            profileOverride.seed = seed;
+        }
+        octaves = profileOverride.octaves;
+        octavesIncrementalVariance = profileOverride.octavesIncrementalVariance;
+        scale = profileOverride.scale;
+        circularFade = profileOverride.circularFade;
+        circleRadius = profileOverride.circleRadius;
+        circularFadeExtraOffset = profileOverride.circularFadeExtraOffset;
+        circularFadePower = profileOverride.circularFadePower;
+        waterHeightOffset = profileOverride.waterHeightOffset;
+        grassNoiseScale = profileOverride.grassNoiseScale;
+        grassRate = profileOverride.grassRate;
+        flattenHeight = profileOverride.flattenHeight;
+        flattenReach = profileOverride.flattenReach;
+        flattenIntensity = profileOverride.flattenIntensity;
+        blurAverageOfPreviousPixel = profileOverride.blurAverageOfPreviousPixel;
+        blurIntensity = profileOverride.blurIntensity;
+    }
     TerrainData RandomizeTerrain(TerrainData tData) {
         tData.heightmapResolution = width + 1;
         tData.size = new Vector3(width, height, length);

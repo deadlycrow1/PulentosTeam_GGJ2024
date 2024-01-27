@@ -132,7 +132,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Gloss: 0.7
+    - _Gloss: 0.5
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -154,6 +154,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CorruptionTint: {r: 1, g: 0, b: 0, a: 1}
+    - _Corruption_Diffuse_Tint: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emission_Tint: {r: 127.99999, g: 0, b: 0, a: 0}
     - _Eyes_Glow_Tint: {r: 47.93726, g: 0, b: 0, a: 0}
