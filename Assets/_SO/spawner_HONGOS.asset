@@ -17,11 +17,11 @@ MonoBehaviour:
   - {fileID: 5229869994821361081, guid: ce51fd37ef9f4894391e5f403e715b3d, type: 3}
   - {fileID: 9073505388429932964, guid: 29458f21d60de1f44b40143a549923fb, type: 3}
   - {fileID: 7129372859612587676, guid: 8a3e4147e2eb4394abc4f3dc6865e54d, type: 3}
-  targetAmount: 200
-  minimumDistance: 0.1
-  scaleRange: {x: 0.8, y: 3}
-  verticalScaleRange: {x: 0.7, y: 1.5}
-  spawnOffset: {x: 0, y: -0.2, z: 0}
+  targetAmount: 700
+  minimumDistance: 0.5
+  scaleRange: {x: 0.3, y: 2}
+  verticalScaleRange: {x: 0.7, y: 3}
+  spawnOffset: {x: 0, y: 0, z: 0}
   alignToSurface: 1
   alignmentRate: 0.8
   discardXYAxis: 0

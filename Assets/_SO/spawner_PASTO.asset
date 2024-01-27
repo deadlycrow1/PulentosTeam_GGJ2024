@@ -15,11 +15,11 @@ MonoBehaviour:
   groundTypeIndex: 2
   prefabs:
   - {fileID: 8363282216379042474, guid: 2a0cc9560959aff45ad84893636d0592, type: 3}
-  - {fileID: 8363282216379042474, guid: 2a0cc9560959aff45ad84893636d0592, type: 3}
-  targetAmount: 9000
+  - {fileID: 8363282216379042474, guid: 0a8a20b457b2aa84687c79300f884893, type: 3}
+  targetAmount: 24000
   minimumDistance: 0.1
-  scaleRange: {x: 0.8, y: 3}
-  verticalScaleRange: {x: 0.7, y: 1.5}
+  scaleRange: {x: 2, y: 4}
+  verticalScaleRange: {x: 0.4, y: 0.6}
   spawnOffset: {x: 0, y: -0.22, z: 0}
   alignToSurface: 1
   alignmentRate: 0.75
