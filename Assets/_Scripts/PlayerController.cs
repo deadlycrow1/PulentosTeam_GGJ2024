@@ -23,16 +23,24 @@ public class PlayerController : MonoBehaviour {
 
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
-        Vector3 inputVector = (cachedCam.right.normalized *
-            moveInput.x) + (cachedCam.forward.normalized * moveInput.y);
-        inputVector.y = 0;
+        
         // VER ESTO PARA QUE MIRE MOUSE,
         // PERO PIERNAS CALCULEN VECTOR DE DIRECCION PA LA ANIMACION MAS ADELANTE
+        /*
         if (moveInput != Vector2.zero) {
             t.rotation = Quaternion.LookRotation(inputVector);
         }
+        */
         t.LookAt(cursorPosition);
-        playerRb.MovePosition(t.position + inputVector * speed * Time.deltaTime); // Actually move there
+        
+    }
+    private void FixedUpdate() {
+        Vector3 inputVector = (cachedCam.right.normalized *
+            moveInput.x) + (cachedCam.forward.normalized * moveInput.y);
+        inputVector.y = 0;
+        if (moveInput != Vector2.zero) {
+            playerRb.MovePosition(t.position + inputVector * speed * Time.deltaTime); // Actually move there
+        }
     }
 }
 
