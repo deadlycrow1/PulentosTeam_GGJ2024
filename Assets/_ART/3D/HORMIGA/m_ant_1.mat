@@ -123,7 +123,7 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _CorruptionLevel: 1
-    - _Corruption_Intensity: 6
+    - _Corruption_Intensity: 15
     - _Corruption_Speed: 0.3
     - _Cull: 2
     - _Cutoff: 0.5
@@ -156,7 +156,7 @@ Material:
     - _CorruptionTint: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emission_Tint: {r: 127.99999, g: 0, b: 0, a: 0}
-    - _Eyes_Glow_Tint: {r: 22.627417, g: 0, b: 0, a: 0}
+    - _Eyes_Glow_Tint: {r: 47.93726, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

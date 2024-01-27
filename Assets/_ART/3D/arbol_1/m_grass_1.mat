@@ -25,14 +25,15 @@ Material:
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHATEST_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2000
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2450
   stringTagMap:
-    RenderType: Opaque
+    RenderType: TransparentCutout
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
@@ -100,8 +101,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0
-    - _AlphaToMask: 0
+    - _AlphaClip: 1
+    - _AlphaToMask: 1
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -147,6 +148,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Transmission_Tint: {r: 0.22785716, g: 0.319, b: 0, a: 0}
     - _Wind_Move_Direction: {r: 1, g: 0.3, b: 1, a: 0}
     - _tint_A: {r: 0.6132076, g: 0.5153734, b: 0.2805714, a: 0}
     - _tint_B: {r: 0.2924528, g: 0.26296017, b: 0.16415983, a: 0}
