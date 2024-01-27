@@ -35,11 +35,11 @@ public class PlayerController : MonoBehaviour {
         
     }
     private void FixedUpdate() {
-        Vector3 inputVector = (cachedCam.right.normalized *
-            moveInput.x) + (cachedCam.forward.normalized * moveInput.y);
+        Vector3 inputVector = (cachedCam.right *
+            moveInput.x) + (cachedCam.forward * moveInput.y);
         inputVector.y = 0;
         if (moveInput != Vector2.zero) {
-            playerRb.MovePosition(t.position + inputVector * speed * Time.deltaTime); // Actually move there
+            playerRb.MovePosition(t.position + inputVector.normalized * speed * Time.deltaTime); // Actually move there
         }
     }
 }
