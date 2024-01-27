@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4344849ef509442a8845738488d15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fov: 0
   playerTarget: {fileID: 0}
   lerpSpeed: 5
 --- !u!1 &6918186252254062656
@@ -103,8 +104,8 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 20
     OrthographicSize: 5
-    NearClipPlane: 0.3
-    FarClipPlane: 1000
+    NearClipPlane: 0.1
+    FarClipPlane: 100
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
