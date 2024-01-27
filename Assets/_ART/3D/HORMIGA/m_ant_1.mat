@@ -65,8 +65,16 @@ Material:
         m_Texture: {fileID: 2800000, guid: a673a5d06c4596a44bd82a05e2270e00, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Emission:
+        m_Texture: {fileID: 2800000, guid: 979bb467522e7d648a514a6865f7084c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Eyes_Glow:
+        m_Texture: {fileID: 2800000, guid: 979bb467522e7d648a514a6865f7084c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -114,8 +122,8 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _CorruptionLevel: 0
-    - _Corruption_Intensity: 22
+    - _CorruptionLevel: 1
+    - _Corruption_Intensity: 6
     - _Corruption_Speed: 0.3
     - _Cull: 2
     - _Cutoff: 0.5
@@ -147,6 +155,8 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CorruptionTint: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Emission_Tint: {r: 127.99999, g: 0, b: 0, a: 0}
+    - _Eyes_Glow_Tint: {r: 22.627417, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
