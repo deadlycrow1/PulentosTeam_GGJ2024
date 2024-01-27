@@ -412,7 +412,7 @@ MonoBehaviour:
   width: 256
   length: 256
   height: 256
-  seed: 112
+  seed: 7758
   octaves: 5
   octavesIncrementalVariance: 0.191
   scale: 12.8

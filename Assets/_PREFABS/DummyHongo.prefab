@@ -11,17 +11,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: e97e7c9c1a0e0eb4daa20df78526abaa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 87.281364
+      value: 100.37769
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e97e7c9c1a0e0eb4daa20df78526abaa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 67.22
+      value: 52.61663
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e97e7c9c1a0e0eb4daa20df78526abaa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 136.40945
+      value: 129.46375
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e97e7c9c1a0e0eb4daa20df78526abaa,
         type: 3}
@@ -107,15 +107,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 470d59d721fc3124dae5cf3eb64bbbb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 9
-  dashForce: 0
-  dashDuration: 0
-  dashKey: 32
-  dashCd: 0
-  gravityScale: 0
+  isGrounded: 0
+  isDashing: 0
+  speed: 6
+  dashSpeed: 33
+  dashDuration: 0.15
   bulletPrefab: {fileID: 8145768355740336947, guid: d94e08be6ecf1ee4c84f0944486b1c70,
     type: 3}
   secondsBetweenShots: 0.2
+  bulletHeight: 0
 --- !u!54 &5604394561263658212
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 3
+  m_CollisionDetection: 0
 --- !u!136 &1669975907630298185
 CapsuleCollider:
   m_ObjectHideFlags: 0
