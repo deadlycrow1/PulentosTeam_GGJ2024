@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4076a7a322ce2074db4e8492e5544eb6, type: 3}
-  m_Name: terrain_profile
+  m_Name: terrain_profile Crestas Mid
   m_EditorClassIdentifier: 
   randomizeSeed: 0
   seed: 705252
@@ -23,9 +23,9 @@ MonoBehaviour:
   circularFadePower: 0.443
   waterHeightOffset: 25
   grassNoiseScale: 0.485
-  grassRate: 0.32
+  grassRate: 0.42
   flattenHeight: 62
   flattenReach: 1
   flattenIntensity: 0.732
   blurAverageOfPreviousPixel: 0.258
-  blurIntensity: 0.377
+  blurIntensity: 0.48

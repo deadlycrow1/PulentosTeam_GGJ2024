@@ -16,9 +16,9 @@ MonoBehaviour:
   prefabs:
   - {fileID: 4326792997143558968, guid: 8888be78756d2b74abdc2e09c0133cf8, type: 3}
   - {fileID: 4326792997143558968, guid: 109277754ac9f1747838e89b1e4fbc72, type: 3}
-  targetAmount: 150
+  targetAmount: 620
   minimumDistance: 3
-  scaleRange: {x: 0.8, y: 2}
+  scaleRange: {x: 0.5, y: 1.2}
   verticalScaleRange: {x: 0.7, y: 1.5}
   spawnOffset: {x: 0, y: -0.1, z: 0}
   alignToSurface: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   groundTypeIndex: 2
   prefabs:
   - {fileID: 6792325020600609812, guid: 1d7e671a346c1c44a82baf758f46fc6a, type: 3}
-  targetAmount: 60
+  targetAmount: 80
   minimumDistance: 10
   scaleRange: {x: 1, y: 1}
   verticalScaleRange: {x: 1, y: 1}

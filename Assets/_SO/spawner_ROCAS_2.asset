@@ -18,9 +18,9 @@ MonoBehaviour:
   - {fileID: 633807606026723396, guid: 4369d526460ce4143b246fd5785ff504, type: 3}
   - {fileID: 4888584483384070999, guid: 9cee4ec4e85e4fc45af6a59a01ecfd38, type: 3}
   - {fileID: 6327838171765385895, guid: e749b9426a3109b41abd1eb886ea684f, type: 3}
-  targetAmount: 100
+  targetAmount: 140
   minimumDistance: 0.1
-  scaleRange: {x: 0.8, y: 3}
+  scaleRange: {x: 0.8, y: 4}
   verticalScaleRange: {x: 0.7, y: 1.5}
   spawnOffset: {x: 0, y: -0.22, z: 0}
   alignToSurface: 0
