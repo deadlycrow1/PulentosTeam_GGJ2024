@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public float health;
+    public float depression = 100f;
+    float maxDepression;
+
+    private void Awake() {
+        maxDepression = depression;
+    }
 }
