@@ -11,6 +11,8 @@ public class TerrainRandomizer : MonoBehaviour {
     [BoxGroup("NO MOVER ESTOS")]
     public int height = 256;
     [BoxGroup("Parametros para editar")]
+    public bool randomizeSeed = true;
+    [BoxGroup("Parametros para editar")]
     public int seed = 1;
     [BoxGroup("Parametros para editar")]
     public int octaves = 4;
@@ -48,10 +50,26 @@ public class TerrainRandomizer : MonoBehaviour {
     [BoxGroup("Parametros para editar")]
     [Range(0.001f, 1f)]
     public float grassRate = 0.5f;
-    
+    [BoxGroup("Parametros para editar")]
+    public float flattenHeight = 62f;
+    [BoxGroup("Parametros para editar")]
+    public float flattenReach = 1f;
+    [BoxGroup("Parametros para editar")]
+    [Range(0f, 1f)]
+    public float flattenIntensity = .5f;
+    [BoxGroup("Parametros para editar")]
+    [Range(0f, 1f)]
+    public float blurAverageOfPreviousPixel = 0.3f;
+    [BoxGroup("Parametros para editar")]
+    [Range(0f, 1f)]
+    public float blurIntensity = 0.3f;
 
     [Button("Randomize Terrain")]
     public void GenerateRandomTerrain() {
+        if (randomizeSeed) {
+            seed = Random.Range(1, 1000000);
+        }
+        Random.InitState(seed);
         if (!cachedTerrain) {
             cachedTerrain = GetComponent<Terrain>();
         }
@@ -60,23 +78,38 @@ public class TerrainRandomizer : MonoBehaviour {
         if (circularFade) {
             CircularFadeTerrain();
         }
+        if (flattenIntensity > 0f) {
+            FlattenTerrain();
+        }
+        if(blurIntensity > 0f) {
+            BlurTerrain();
+        }
         ResetDefaults();
         GenerateSplatMap();
     }
 
     private void Awake() {
+        if (randomizeSeed) {
+            seed = Random.Range(1, 1000000);
+        }
+        Random.InitState(seed);
         cachedTerrain = GetComponent<Terrain>();
         cachedTerrain.terrainData = RandomizeTerrain(cachedTerrain.terrainData);
 
         if (circularFade) {
             CircularFadeTerrain();
         }
+        if (flattenIntensity > 0f) {
+            FlattenTerrain();
+        }
+        if (blurIntensity > 0f) {
+            BlurTerrain();
+        }
         ResetDefaults();
         GenerateSplatMap();
     }
     
     TerrainData RandomizeTerrain(TerrainData tData) {
-        seed = Random.Range(1, 9999);
         tData.heightmapResolution = width + 1;
         tData.size = new Vector3(width, height, length);
 
@@ -129,7 +162,6 @@ public class TerrainRandomizer : MonoBehaviour {
         curOctaveVariance = 1f;
     }
     private void CircularFadeTerrain() {
-
         int offset = width / 2;
         //raise a  circle. sort of.
         float[,] heights = cachedTerrain.terrainData.GetHeights(0, 0, width, length);
@@ -137,15 +169,8 @@ public class TerrainRandomizer : MonoBehaviour {
             for (int y = 0; y < length; y++) {
                 float currentRadiusSqr = (new Vector2(width / 2, length / 2) - new Vector2(x, y)).sqrMagnitude * circleRadius;
 
-                /*
-                if (currentRadiusSqr < offset * offset) {
-
-                    heights[y, x] *= height * (1 - currentRadiusSqr / (offset * offset)) / (height * sphereHeightOffset);
-                }
-                */
-
-                heights[y, x] = Mathf.Lerp(
-                    heights[y, x] *= Mathf.Lerp(1f,
+                heights[x, y] = Mathf.Lerp(
+                    heights[x, y] *= Mathf.Lerp(1f,
                     height * Mathf.Clamp((1 - currentRadiusSqr / (offset * offset)) / height, 0.0001f, 3f * height),
                     circularFadePower),
 
@@ -154,6 +179,42 @@ public class TerrainRandomizer : MonoBehaviour {
                     circularFadePower)
                     ,
                     circularFadeExtraOffset);
+            }
+        }
+        cachedTerrain.terrainData.SetHeights(0, 0, heights);
+    }
+    private void FlattenTerrain() {
+        float[,] heights = cachedTerrain.terrainData.GetHeights(0, 0, width, length);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < length; y++) {
+                float curHeight = cachedTerrain.terrainData.GetHeight(x, y);
+                float normalizedHeight = Mathf.InverseLerp(0, height, curHeight);
+                float distanceWeightLoss =Mathf.Clamp(1f-Mathf.Abs((flattenHeight- curHeight)/(flattenHeight + curHeight)/2f), 0f, 1f);
+
+                if (curHeight > (flattenHeight-flattenReach) && 
+                    curHeight < (flattenHeight + flattenReach)) {
+                    float targetHeightAfterFlatten = Mathf.Lerp(curHeight, flattenHeight, flattenIntensity * distanceWeightLoss);
+                    normalizedHeight = Mathf.InverseLerp(0, height, targetHeightAfterFlatten);
+
+                }
+                heights[x, y] = normalizedHeight;
+            }
+        }
+        cachedTerrain.terrainData.SetHeights(0, 0, heights);
+    }
+    private void BlurTerrain() {
+        float[,] heights = cachedTerrain.terrainData.GetHeights(0, 0, width, length);
+        float prevPixelHeight = 0;
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < length; y++) {
+                float curHeight = cachedTerrain.terrainData.GetHeight(x, y)/height;
+
+                if (x == 0 && y == 0) {
+                    prevPixelHeight = curHeight;
+                }
+                float BlurredPixelHeight = Mathf.Lerp(curHeight, prevPixelHeight, blurAverageOfPreviousPixel);
+                
+                heights[x, y] = Mathf.Lerp(curHeight, BlurredPixelHeight, blurIntensity);
             }
         }
         cachedTerrain.terrainData.SetHeights(0, 0, heights);

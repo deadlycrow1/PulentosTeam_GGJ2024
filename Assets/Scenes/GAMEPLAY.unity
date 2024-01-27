@@ -326,10 +326,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964629093d90d1a42a2f82181426e14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 256
-  length: 256
+  width: 257
+  length: 257
   height: 256
-  seed: 2446
+  randomizeSeed: 0
+  seed: 7653
   octaves: 5
   octavesIncrementalVariance: 0.606
   scale: 2.2
@@ -337,9 +338,14 @@ MonoBehaviour:
   circleRadius: 0.1
   circularFadeExtraOffset: 0.239
   circularFadePower: 0.507
-  waterHeightOffset: 12
+  waterHeightOffset: 59
   grassNoiseScale: 0.51
   grassRate: 0.767
+  flattenHeight: 62
+  flattenReach: 1
+  flattenIntensity: 0.5
+  blurAverageOfPreviousPixel: 0.5
+  blurIntensity: 0.5
 --- !u!154 &369171693
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -358,7 +364,7 @@ TerrainCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_TerrainData: {fileID: 15600000, guid: b36e315384663544596449beeeafeb1f, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 5efd72fd417b6fe4baec6066029b5063, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &369171694
 Terrain:
@@ -369,7 +375,7 @@ Terrain:
   m_GameObject: {fileID: 369171691}
   m_Enabled: 1
   serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: b36e315384663544596449beeeafeb1f, type: 2}
+  m_TerrainData: {fileID: 15600000, guid: 5efd72fd417b6fe4baec6066029b5063, type: 2}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -652,6 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49340b626915e0b4f8a0ef382041debf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
