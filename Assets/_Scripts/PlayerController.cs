@@ -20,12 +20,19 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     private bool isGrounded;
 
+    public GameObject bulletPrefab;
+
+    public float secondsBetweenShots;
+    public float bulletHeight;
+    float secondsSinceLastShot;
+
 
     void Awake()
     {
         t = this.transform;
         playerRb = GetComponent<Rigidbody>();
         cachedCam = Camera.main.transform;
+        secondsSinceLastShot = secondsBetweenShots;
     }
     void Update()
     {
@@ -38,6 +45,9 @@ public class PlayerController : MonoBehaviour
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
+        secondsSinceLastShot += Time.deltaTime;
+
+
         // VER ESTO PARA QUE MIRE MOUSE,
         // PERO PIERNAS CALCULEN VECTOR DE DIRECCION PA LA ANIMACION MAS ADELANTE
         /*
@@ -46,6 +56,12 @@ public class PlayerController : MonoBehaviour
         }
         */
         t.LookAt(cursorPosition);
+
+        if (secondsSinceLastShot >= secondsBetweenShots && Input.GetButton("Fire1"))
+        {
+            Instantiate(bulletPrefab, t.position + t.forward + t.up * bulletHeight, t.rotation);
+            secondsSinceLastShot = 0;
+        }
 
 
     }

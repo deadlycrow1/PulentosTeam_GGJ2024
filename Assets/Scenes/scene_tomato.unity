@@ -139,7 +139,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 94a65d42d1bd93f449065a8b6ac2d59a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 42.280453
+      value: 46.186
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 94a65d42d1bd93f449065a8b6ac2d59a,
         type: 3}
@@ -194,7 +194,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94a65d42d1bd93f449065a8b6ac2d59a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 974752626}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94a65d42d1bd93f449065a8b6ac2d59a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 974752627}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 94a65d42d1bd93f449065a8b6ac2d59a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 974752628}
   m_SourcePrefab: {fileID: 100100000, guid: 94a65d42d1bd93f449065a8b6ac2d59a, type: 3}
 --- !u!1 &164962212
 GameObject:
@@ -342,8 +354,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.1
+  far clip plane: 100
   field of view: 20
   orthographic: 0
   orthographic size: 5
@@ -489,7 +501,7 @@ MonoBehaviour:
   width: 256
   length: 256
   height: 256
-  seed: 8880
+  seed: 6782
   octaves: 5
   octavesIncrementalVariance: 0.191
   scale: 12.8
@@ -747,6 +759,60 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 967643121701649787}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &974752624 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 94a65d42d1bd93f449065a8b6ac2d59a,
+    type: 3}
+  m_PrefabInstance: {fileID: 54485746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &974752626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974752624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638a87bae85e5db4ab3e46490848895e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+--- !u!136 &974752627
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974752624}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 3.8174632
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.4087313, z: 0}
+--- !u!114 &974752628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974752624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49340b626915e0b4f8a0ef382041debf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1113017321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1006,6 +1072,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2750798272622100664, guid: b7301cca552fbb84981b942618f3e6ee,
+        type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2448128605558086088, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
       propertyPath: dashForce
@@ -1020,6 +1091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpAmount
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448128605558086088, guid: b7301cca552fbb84981b942618f3e6ee,
+        type: 3}
+      propertyPath: bulletHeight
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 5860873400588183650, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}

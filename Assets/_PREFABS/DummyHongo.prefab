@@ -84,6 +84,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1669975907630298185}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e97e7c9c1a0e0eb4daa20df78526abaa,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2750798272622100664}
   m_SourcePrefab: {fileID: 100100000, guid: e97e7c9c1a0e0eb4daa20df78526abaa, type: 3}
 --- !u!1 &6493577009034719960 stripped
 GameObject:
@@ -104,6 +108,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 9
+  dashForce: 0
+  dashDuration: 0
+  dashKey: 32
+  dashCd: 0
+  gravityScale: 0
+  bulletPrefab: {fileID: 8145768355740336947, guid: d94e08be6ecf1ee4c84f0944486b1c70,
+    type: 3}
+  secondsBetweenShots: 0.2
 --- !u!54 &5604394561263658212
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,3 +166,16 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!114 &-2750798272622100664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493577009034719960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 638a87bae85e5db4ab3e46490848895e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
