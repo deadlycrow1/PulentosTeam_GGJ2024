@@ -11,4 +11,8 @@ public class EnemyBar : MonoBehaviour {
         depressionBar.value = curValue;
         barObj.SetActive(isVisible);
     }
+    public void RefreshValue(float newVal, bool isVisible = true) {
+        depressionBar.value = newVal;
+        barObj.SetActive(isVisible);
+    }
 }

@@ -15,6 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     public bool playerDetected, playerInRange;
     public float depression = 100f;
     public SkinnedMeshRenderer enemyMesh;
+    public EnemyBar enemyBar;
 
     float maxDepression;
     GameObject[] patrolPoints;
@@ -28,6 +29,9 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void Start() {
         patrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoint");
+        if (enemyBar) {
+            enemyBar.SetupBar(maxDepression, depression, false);
+        }
     }
     private void ProcessBrain() {
         if (enemyState == EnemyState.Attacking) return;
@@ -79,9 +83,15 @@ public class EnemyBehaviour : MonoBehaviour
         if(curPlayerDistance < playerDetectionDistance) {
             playerDetected = true;
             currentMoveTarget = PlayerController.instance.transform;
+            if (enemyBar) {
+                enemyBar.RefreshValue(depression, true);
+            }
         }
         else {
             playerDetected = false;
+            if (enemyBar) {
+                enemyBar.RefreshValue(depression, false);
+            }
         }
         if(curPlayerDistance < playerAttackRange) {
             playerInRange = true;
