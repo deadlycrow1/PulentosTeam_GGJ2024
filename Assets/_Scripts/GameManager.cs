@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     public int enemyAmountToSpawn = 20;
     public bool isBossLevel;
     public EnemyBehaviour[] bossPrefabs;
+    public int happyEnemies = 0;
+    bool levelDone;
+
     GameObject[] patrolPoints;
      void Awake() {
         instance = this;
@@ -44,6 +47,28 @@ public class GameManager : MonoBehaviour
         Fader.instance.FadeIn();
         yield return new WaitForSeconds(0.3f);
         playerTarget.canBeDamaged = true;
+    }
+    private void Update() {
+        if (!levelDone) {
+            if(happyEnemies > 15) {
+                levelDone = true;
+                Fader.instance.FadeOut();
+                Invoke(nameof(LoadNextLevelDelayed), 2f);
+            }
+            else if (isBossLevel) {
+                if (happyEnemies > 0) {
+                    levelDone = true;
+                    Fader.instance.FadeOut();
+                    Invoke(nameof(LoadNextLevelDelayed), 2f);
+                }
+            }
+        }
+    }
+    public void AddNewHappy() {
+        happyEnemies++;
+    }
+    private void LoadNextLevelDelayed() {
+        LevelCounter.instance.LoadNextLevel();
     }
     private void SpawnBoss() {
         Vector3 spawnPos = new Vector3(64f, 300f, 64f);

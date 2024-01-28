@@ -16,17 +16,17 @@ public class Mainmenu : MonoBehaviour
 
 	public void Intro()
 	{
-		SceneManager.LoadScene("Intro");
+
+		SceneManager.LoadScene("GAMEPLAY");
+	//	SceneManager.LoadScene("Intro");
 		//Destroy(SoundManager);
 		//equipoMusica.PlayOneShot(sonidoIntro);
 	}
-    /*
 	public void PlayGame()
 	{
 		SceneManager.LoadScene("GAMEPLAY");
-		equipoMusica.PlayOneShot(sonidoLvl01);
+		//equipoMusica.PlayOneShot(sonidoLvl01);
 	}
-    */
 	public void Creditos()
 	{
 		SceneManager.LoadScene("Creditos");

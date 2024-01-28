@@ -223,6 +223,8 @@ public class EnemyBehaviour : MonoBehaviour
     }
     IEnumerator WipeDepressionSeq()
     {
+
+        GameManager.instance.AddNewHappy();
         if (enemyBar != null)
         {
             enemyBar.RefreshValue(depression, false);
