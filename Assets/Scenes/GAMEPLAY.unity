@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.155792, g: 0.2872636, b: 0.24924803, a: 1}
+  m_IndirectSpecularColor: {r: 0.15585999, g: 0.2872552, b: 0.24920535, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -155,8 +155,10 @@ MonoBehaviour:
   playerTarget: {fileID: 927560222}
   terrainRandomizer: {fileID: 369171692}
   terrainProfiles:
+  - {fileID: 11400000, guid: 316dd2a5df1762b40965d956ecb3ba07, type: 2}
+  - {fileID: 11400000, guid: 14b8f05121969e84591f6f075b7d36bf, type: 2}
+  - {fileID: 11400000, guid: dc0d34601f39d1740a64ab7c37afe39a, type: 2}
   - {fileID: 11400000, guid: 0b95dbf5afd02e34395a82eb0a112f28, type: 2}
-  - {fileID: 11400000, guid: d6a62eb9e92902c4c9fd746fed68406e, type: 2}
   - {fileID: 11400000, guid: a9c4622effede2843a45d214d2bd11d5, type: 2}
   - {fileID: 11400000, guid: c689750659ee6164eb52683a8abfc98a, type: 2}
   - {fileID: 11400000, guid: 37e71f6f1cd81dd47b06e83f2401022a, type: 2}
@@ -166,12 +168,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f954b58a0b7ca74d98f43b46bd5dbf6, type: 2}
   - {fileID: 11400000, guid: 743f0b15c9989424eb7b2487ca568e9c, type: 2}
   - {fileID: 11400000, guid: 82c08e65dcde53e45ac4554da005c3b7, type: 2}
+  - {fileID: 11400000, guid: 23876cc0e0c28884789fa196e96083d3, type: 2}
+  - {fileID: 11400000, guid: c5b2930d5f1574c45a9871abcbaf8a0d, type: 2}
+  - {fileID: 11400000, guid: b01ceaa601926bd4482b5ac49eff9894, type: 2}
   - {fileID: 11400000, guid: 1bb38a98e2c0385499da024379e84ca2, type: 2}
   - {fileID: 11400000, guid: 94a01ae8b0f3e104fa627a3327e7a8a7, type: 2}
   - {fileID: 11400000, guid: 7d5bbd23f6241ae4b8a4ba735c452e11, type: 2}
   - {fileID: 11400000, guid: 77ab6201f297ded4292b00f6df695292, type: 2}
   - {fileID: 11400000, guid: e48e3690ca3b76f4eadc54da1b80989f, type: 2}
   - {fileID: 11400000, guid: 89c116457b7a24e449e65a0ca7cc7031, type: 2}
+  - {fileID: 11400000, guid: 057cc80f9c7a87c49b3b95b3c3ee7ef8, type: 2}
+  - {fileID: 11400000, guid: 4b15b6f4baff9784e8b61d7fbc0ac4b5, type: 2}
+  - {fileID: 11400000, guid: 216287b9b470c064d9c6d3ce9b9bb541, type: 2}
   - {fileID: 11400000, guid: 0437fb2bdf67a5e4a8ce76c7082f500d, type: 2}
   - {fileID: 11400000, guid: b98906f542fb00e42bb8f65294fd47c2, type: 2}
   - {fileID: 11400000, guid: 3aea6de7ecff5be4694674aed3aedf75, type: 2}
@@ -184,9 +192,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a27db235372679740a425afac2c41812, type: 2}
   - {fileID: 11400000, guid: 826b287b07a6bc64a9d0936bb5483920, type: 2}
   - {fileID: 11400000, guid: 385b874ace3d853429a6ae8b25dba0a9, type: 2}
+  - {fileID: 11400000, guid: 6b83f685b9781c14784de1a2eab93db4, type: 2}
+  - {fileID: 11400000, guid: 0c1f006052a26dc429ad5034f2abad0b, type: 2}
+  - {fileID: 11400000, guid: d6a62eb9e92902c4c9fd746fed68406e, type: 2}
   enemyPrefabs:
   - {fileID: 4939670621690949763, guid: f73653143f64b0e47b9212fb1bf8132a, type: 3}
   enemyAmountToSpawn: 50
+  isBossLevel: 0
+  bossPrefabs: []
 --- !u!4 &201738795
 Transform:
   m_ObjectHideFlags: 0

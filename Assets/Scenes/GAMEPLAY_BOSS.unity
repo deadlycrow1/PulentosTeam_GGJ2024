@@ -156,25 +156,18 @@ MonoBehaviour:
   terrainRandomizer: {fileID: 369171692}
   terrainProfiles:
   - {fileID: 11400000, guid: 1272efda64c98224fbc55144c6b4c530, type: 2}
-  - {fileID: 11400000, guid: faab5c2fdb5c75e43ae43dc748b48352, type: 2}
-  - {fileID: 11400000, guid: 156cd7a342d1e3a48843b950ece519ac, type: 2}
-  - {fileID: 11400000, guid: d5c6cf06c832d5d41839dc24ea6b0b90, type: 2}
-  - {fileID: 11400000, guid: 90dd4135e4874fb45b39f05c56c14417, type: 2}
-  - {fileID: 11400000, guid: e79607f73c9c73c4786db7499f9aa25b, type: 2}
-  - {fileID: 11400000, guid: bff58120c0230854986d815167ef2cdc, type: 2}
-  - {fileID: 11400000, guid: 2eaef93ee62f8444b813fb949b2af353, type: 2}
-  - {fileID: 11400000, guid: 0dff6d5c54aa9664aba017cf486c240b, type: 2}
-  - {fileID: 11400000, guid: 7b000bef569471540b9e505bee74fde4, type: 2}
-  - {fileID: 11400000, guid: 94cb0bdc5a996804f9cf3e326b26f368, type: 2}
-  - {fileID: 11400000, guid: 22ed7312d4d72d948a7a188b82d093ba, type: 2}
-  - {fileID: 11400000, guid: 0f9242e65455ae54b993b4a89e71ffa7, type: 2}
-  - {fileID: 11400000, guid: 4fb89c538c750a74ca4dc6235bde23bc, type: 2}
-  - {fileID: 11400000, guid: a53f6623b46a0164c8f304b63efd2ac5, type: 2}
-  - {fileID: 11400000, guid: ae95e9ade9dcd2747b669e502af30aeb, type: 2}
-  - {fileID: 11400000, guid: ab03f3e1e8cc6f04c805eb685393d62c, type: 2}
-  - {fileID: 11400000, guid: 915a941cd660df642b8bf2a68a183544, type: 2}
-  - {fileID: 11400000, guid: 97a2661541aac804683b811c9cad4cfe, type: 2}
-  - {fileID: 11400000, guid: aed37d364ae8b63449eeb98c1b5cbd10, type: 2}
+  - {fileID: 11400000, guid: e2851d5bcd257c241bea65275dc36352, type: 2}
+  - {fileID: 11400000, guid: 6e7d81bb9262d0445a1a8da3f26cfcf0, type: 2}
+  - {fileID: 11400000, guid: 9632cff092eaa3043904bf1518b5d0f5, type: 2}
+  - {fileID: 11400000, guid: d9e023178f0132741a6180268d4ffa54, type: 2}
+  - {fileID: 11400000, guid: 8c6192379ecdbb744804edc86eca647b, type: 2}
+  - {fileID: 11400000, guid: b96762cb1cf90d7499af99b7f78ff109, type: 2}
+  - {fileID: 11400000, guid: 00b5cb5c0ef18eb479dc862b9652a076, type: 2}
+  - {fileID: 11400000, guid: bfeb098380d115f41b34af5545217758, type: 2}
+  - {fileID: 11400000, guid: c8c3865649ab9214a8474484860db876, type: 2}
+  - {fileID: 11400000, guid: ddde2b9471b78da4b92f7d2953ae5dbe, type: 2}
+  - {fileID: 11400000, guid: 1c971413006040941b5b095d4ea6927d, type: 2}
+  - {fileID: 11400000, guid: 1f408b562057e554d869232137aa9a4d, type: 2}
   enemyPrefabs:
   - {fileID: 4939670621690949763, guid: f73653143f64b0e47b9212fb1bf8132a, type: 3}
   enemyAmountToSpawn: 0
