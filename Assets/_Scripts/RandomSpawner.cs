@@ -4,6 +4,7 @@ using UnityEngine;
 using NaughtyAttributes;
 
 public class RandomSpawner : MonoBehaviour {
+    public static RandomSpawner instance;
     [Header("World Spawn Settings")]
     public Terrain cachedTerrain;
     public PrefabSpawner[] spawners;
@@ -12,10 +13,13 @@ public class RandomSpawner : MonoBehaviour {
     Vector3 tempRayPos;
     int tempSpawnCount = 0;
 
-    private void Start() {
-        RandomSpawn();
+    private void Awake() {
+        instance = this;
     }
-    void RandomSpawn() {
+    private void Start() {
+        //RandomSpawn();
+    }
+    public void RandomSpawn() {
         cachedParent = null;
         tempSpawnCount = 0;
         int lm = 1 << 10;

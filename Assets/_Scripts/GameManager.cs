@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     IEnumerator Start() {
         terrainRandomizer.profileOverride = terrainProfiles[Random.Range(0, terrainProfiles.Length)];
         terrainRandomizer.GenerateRandomTerrain();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        RandomSpawner.instance.RandomSpawn();
+        yield return new WaitForSeconds(0.2f);
         patrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoint");
         yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < enemyAmountToSpawn; i++) {
