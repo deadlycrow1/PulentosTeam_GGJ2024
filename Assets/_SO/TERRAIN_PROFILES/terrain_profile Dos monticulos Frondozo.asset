@@ -19,7 +19,7 @@ MonoBehaviour:
   scale: 4.7
   circularFade: 1
   circleRadius: 2.07
-  circularFadeExtraOffset: 0.361
+  circularFadeExtraOffset: 0.47
   circularFadePower: 0.057
   waterHeightOffset: 25
   grassNoiseScale: 0.66

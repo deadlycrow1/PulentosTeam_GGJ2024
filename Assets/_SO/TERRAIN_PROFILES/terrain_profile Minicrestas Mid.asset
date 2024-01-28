@@ -23,7 +23,7 @@ MonoBehaviour:
   circularFadePower: 0.279
   waterHeightOffset: 25
   grassNoiseScale: 0.789
-  grassRate: 0.42
+  grassRate: 0.6
   flattenHeight: 62
   flattenReach: 1
   flattenIntensity: 0.469

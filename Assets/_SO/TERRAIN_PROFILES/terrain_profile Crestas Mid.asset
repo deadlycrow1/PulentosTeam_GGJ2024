@@ -19,11 +19,11 @@ MonoBehaviour:
   scale: 12.3
   circularFade: 1
   circleRadius: 0.32
-  circularFadeExtraOffset: 0.485
+  circularFadeExtraOffset: 0.495
   circularFadePower: 0.443
   waterHeightOffset: 25
   grassNoiseScale: 0.485
-  grassRate: 0.42
+  grassRate: 0.6
   flattenHeight: 62
   flattenReach: 1
   flattenIntensity: 0.732
