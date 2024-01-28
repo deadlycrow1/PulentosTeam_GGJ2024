@@ -38,7 +38,7 @@ public class BulletBehaviour : MonoBehaviour
             HealthSystem theirHealthSystem = other.gameObject.GetComponent<HealthSystem>();
             if (theirHealthSystem != null)
             {
-                theirHealthSystem.TakeDamage(bulletDamage);
+              //  theirHealthSystem.TakeDamage(bulletDamage);
                 Destroy(gameObject);
             }
         }
