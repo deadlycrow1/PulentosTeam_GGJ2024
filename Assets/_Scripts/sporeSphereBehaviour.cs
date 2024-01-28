@@ -8,6 +8,8 @@ public class sporeSphereBehaviour : MonoBehaviour
     public float sphereRadius;
     public float secondsUntilDestroyed;
 
+    public float sphereAttackRadius;
+
     public float sphereAttackDamage = 10f;
 
     // Start is called before the first frame update
@@ -30,7 +32,7 @@ public class sporeSphereBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Collider[] hitCollider = Physics.OverlapSphere(transform.position, sphereRadius);
+        Collider[] hitCollider = Physics.OverlapSphere(transform.position, sphereAttackRadius);
         if (hitCollider != null && hitCollider.Length > 0)
         {
 

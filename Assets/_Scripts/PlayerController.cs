@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         capsuleCollider = GetComponent<CapsuleCollider>();
 
         sporeSphereBehaviour sphereBheaviour = sporeSpherePrefab.GetComponent<sporeSphereBehaviour>();
-        sphereBheaviour.sphereRadius = attackSphereRadius;
+        sphereBheaviour.sphereAttackRadius = attackSphereRadius;
     }
     void Update()
     {
