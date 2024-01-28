@@ -43,9 +43,9 @@ public class GameManager : MonoBehaviour
         Fader.instance.FadeIn();
     }
     private void SpawnBoss() {
-        Vector3 spawnPos = new Vector3(64f, 200f, 64f);
+        Vector3 spawnPos = new Vector3(64f, 300f, 64f);
         int lm = 1 << 10;
-        if(Physics.Raycast(new Vector3(64f,200f,64f), Vector3.down, out RaycastHit hit, 500f, lm)) {
+        if(Physics.Raycast(new Vector3(64f,300f,64f), Vector3.down, out RaycastHit hit, 500f, lm)) {
             spawnPos = hit.point;
         }
         Instantiate(bossPrefabs[Random.Range(0, bossPrefabs.Length)], spawnPos + Vector3.up, Quaternion.identity);

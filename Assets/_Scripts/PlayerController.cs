@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
             t.rotation = Quaternion.LookRotation(dashDirection);
             bool dashObstructed = false;
             int lm = 1 << 10;
-            if (Physics.Raycast(t.position + (Vector3.up * 0.2f), dashDirection.normalized, capsuleCollider.radius + 0.15f, lm))
+            if (Physics.Raycast(t.position + (Vector3.up * 0.4f), dashDirection.normalized, capsuleCollider.radius + 0.15f, lm))
             {
                 dashObstructed = true;
             }

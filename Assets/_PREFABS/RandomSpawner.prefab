@@ -184,6 +184,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 140f866e1683764448073ecc5a49bdfb, type: 2}
   - {fileID: 11400000, guid: c61bd70179e142148b2eb50f7c1b9a4b, type: 2}
   - {fileID: 11400000, guid: ad9de1f2e4a98574488a9f64501740d9, type: 2}
+  - {fileID: 11400000, guid: 078216f7ca56061479aeb7231445072a, type: 2}
   spawnAnchor_A: {fileID: 5253657314623626367}
   spawnAnchor_B: {fileID: 7709572174846180303}
 --- !u!1 &6247910398368281913

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44be3f78f52f4964e98658f95ed6d905, type: 3}
+  m_Name: spawner_MARIPOSAS
+  m_EditorClassIdentifier: 
+  groundTypeIndex: 2
+  prefabs:
+  - {fileID: 5395237585681922474, guid: e4363865c0086fc46a77106911d384bd, type: 3}
+  targetAmount: 620
+  minimumDistance: 3
+  scaleRange: {x: 0.5, y: 1.2}
+  verticalScaleRange: {x: 0.7, y: 1.5}
+  spawnOffset: {x: 0, y: -0.1, z: 0}
+  alignToSurface: 1
+  alignmentRate: 0.2
+  discardXYAxis: 0
+  randomizeRotation: 1
+  randomRotationAxis: {x: 0, y: 1, z: 0}
+  parentName: ARBOLES
