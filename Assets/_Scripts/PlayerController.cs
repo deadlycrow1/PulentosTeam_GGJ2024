@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     public static PlayerController instance;
     public float health = 100f;
     public bool isAlive = true;
@@ -16,15 +17,18 @@ public class PlayerController : MonoBehaviour {
     //public float jumpForce;
     public float dashSpeed;
     public float dashDuration;
+    public GameObject sporeSpherePrefab;
     private float dashCdTimer, dashTime;
     Transform cachedCam;
     Transform t;
     Vector2 moveInput;
 
     public float basicAttackCooldown = 0.5f;
+    public float sphereAttackCooldown = 3f;
     public float attackSphereRadius = 1f;
     public float attackSphereForwardOffset = 0.5f;
     public float basicAttackDamage = 20f;
+    public float sphereAttackDamage = 10f;
     public float rangeAttackRadius = 2f;
 
     public float rangeAttackCooldown = 0.25f;
@@ -33,19 +37,26 @@ public class PlayerController : MonoBehaviour {
     Vector3 dashDirection;
     CapsuleCollider capsuleCollider;
     float NextBasicAttack;
+    float NextSphereAttack;
 
-    void Awake() {
+    void Awake()
+    {
         instance = this;
         t = this.transform;
         playerRb = GetComponent<Rigidbody>();
         cachedCam = Camera.main.transform;
         capsuleCollider = GetComponent<CapsuleCollider>();
+
+        sporeSphereBehaviour sphereBheaviour = sporeSpherePrefab.GetComponent<sporeSphereBehaviour>();
+        sphereBheaviour.sphereRadius = attackSphereRadius;
     }
-    void Update() {
+    void Update()
+    {
         if (!isAlive) return;
         if (!canDrive) return;
 
-        if (Input.GetKeyDown(KeyCode.Q)) {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
             isMelee = !isMelee;
             CheckCurrentWeapon();
         }
@@ -58,7 +69,8 @@ public class PlayerController : MonoBehaviour {
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
-        if (!isDashing && Input.GetKeyDown(KeyCode.Space) && Time.time > dashCdTimer) {
+        if (!isDashing && Input.GetKeyDown(KeyCode.LeftShift) && Time.time > dashCdTimer)
+        {
             dashCdTimer = Time.time + 2f;
             dashTime = Time.time + dashDuration;
             isDashing = true;
@@ -66,17 +78,21 @@ public class PlayerController : MonoBehaviour {
             moveInput.x) + (cachedCam.forward * moveInput.y);
             dashDirection.y = 0;
         }
-        if (isDashing) {
-            if (Time.time > dashTime) {
+        if (isDashing)
+        {
+            if (Time.time > dashTime)
+            {
                 isDashing = false;
             }
             t.rotation = Quaternion.LookRotation(dashDirection);
             bool dashObstructed = false;
             int lm = 1 << 10;
-            if (Physics.Raycast(t.position + (Vector3.up * 0.2f), dashDirection.normalized, capsuleCollider.radius + 0.15f, lm)) {
+            if (Physics.Raycast(t.position + (Vector3.up * 0.2f), dashDirection.normalized, capsuleCollider.radius + 0.15f, lm))
+            {
                 dashObstructed = true;
             }
-            if (!dashObstructed) {
+            if (!dashObstructed)
+            {
                 t.position += (dashDirection.normalized * dashSpeed * Time.deltaTime);
             }
             return;
@@ -84,59 +100,77 @@ public class PlayerController : MonoBehaviour {
         t.LookAt(cursorPosition);
         AttackHandler();
     }
-    private void CheckCurrentWeapon() {
+    private void CheckCurrentWeapon()
+    {
         //aca decidir animaciones y objeto a mostrar dependiendo si es melee o rango.
     }
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         if (!isAlive) return;
         if (isDashing) return;
         if (!canDrive) return;
         Vector3 inputVector = (cachedCam.right *
             moveInput.x) + (cachedCam.forward * moveInput.y);
         inputVector.y = 0;
-        if (moveInput != Vector2.zero) {
+        if (moveInput != Vector2.zero)
+        {
             playerRb.MovePosition(t.position + inputVector.normalized * speed * Time.deltaTime); // Actually move there
         }
     }
-    private void OnCollisionEnter(Collision other) {
-        if (other.gameObject.GetComponent<Terrain>() != null) {
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.GetComponent<Terrain>() != null)
+        {
             isGrounded = true;
         }
     }
-    private void OnCollisionExit(Collision other) {
-        if (other.gameObject.GetComponent<Terrain>() != null) {
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.GetComponent<Terrain>() != null)
+        {
             isGrounded = false;
         }
     }
-    private void AttackHandler() {
-        if (isMelee) {
-            if (Input.GetMouseButtonDown(0) && Time.time > NextBasicAttack) {
+    private void AttackHandler()
+    {
+        if (isMelee)
+        {
+            if (Input.GetMouseButtonDown(0) && Time.time > NextBasicAttack)
+            {
                 NextBasicAttack = Time.time + basicAttackCooldown;
                 //print("Atacando!");
                 Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f) + (t.forward * attackSphereForwardOffset);
                 //int lm = 1 << 11;
                 Collider[] hitCollider = Physics.OverlapSphere(attackSphereCenter, attackSphereRadius);
 
-                if (hitCollider != null && hitCollider.Length > 0) {
-                    for (int i = 0; i < hitCollider.Length; i++) {
-                        if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy)) {
+                if (hitCollider != null && hitCollider.Length > 0)
+                {
+                    for (int i = 0; i < hitCollider.Length; i++)
+                    {
+                        if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy))
+                        {
                             enemy.GetDamage(basicAttackDamage);
                         }
                     }
                 }
             }
         }
-        else {
-            if (Input.GetMouseButton(0) && Time.time > NextBasicAttack) {
+        else
+        {
+            if (Input.GetMouseButton(0) && Time.time > NextBasicAttack)
+            {
                 NextBasicAttack = Time.time + rangeAttackCooldown;
                 //print("Atacando!");
                 Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f);
                 //int lm = 1 << 11;
                 Collider[] hitCollider = Physics.OverlapSphere(attackSphereCenter, rangeAttackRadius);
 
-                if (hitCollider != null && hitCollider.Length > 0) {
-                    for (int i = 0; i < hitCollider.Length; i++) {
-                        if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy)) {
+                if (hitCollider != null && hitCollider.Length > 0)
+                {
+                    for (int i = 0; i < hitCollider.Length; i++)
+                    {
+                        if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy))
+                        {
                             enemy.GetDamage(basicAttackDamage);
                         }
                     }
@@ -144,12 +178,35 @@ public class PlayerController : MonoBehaviour {
 
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > NextSphereAttack)
+        {
+            NextSphereAttack = Time.time + sphereAttackCooldown;
+            print("Esfera!");
+            Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f) + (t.forward * attackSphereForwardOffset);
+            Collider[] hitCollider = Physics.OverlapSphere(attackSphereCenter, attackSphereRadius);
+            Instantiate(sporeSpherePrefab, attackSphereCenter, Quaternion.identity);
+            if (hitCollider != null && hitCollider.Length > 0)
+            {
+
+                for (int i = 0; i < hitCollider.Length; i++)
+                {
+                    if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy))
+                    {
+                        enemy.GetDamage(sphereAttackDamage);
+                    }
+                }
+            }
+        }
     }
-    public void GetDamage(float dmgPoints) {
-        if(health > 0) {
+    public void GetDamage(float dmgPoints)
+    {
+        if (health > 0)
+        {
             health -= dmgPoints;
         }
-        else {
+        else
+        {
             //se muere el pj
             health = 0;
             isAlive = false;
