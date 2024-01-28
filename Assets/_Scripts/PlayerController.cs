@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float health = 100f;
     public bool isAlive = true;
     public bool canDrive = false;
+    public bool isMelee = true;
     public bool isGrounded;
     public bool isDashing;
     private Rigidbody playerRb;
@@ -24,6 +25,10 @@ public class PlayerController : MonoBehaviour {
     public float attackSphereRadius = 1f;
     public float attackSphereForwardOffset = 0.5f;
     public float basicAttackDamage = 20f;
+    public float rangeAttackRadius = 2f;
+
+    public float rangeAttackCooldown = 0.25f;
+    public float rangeAttackDamage = 2f;
 
     Vector3 dashDirection;
     CapsuleCollider capsuleCollider;
@@ -39,7 +44,12 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         if (!isAlive) return;
         if (!canDrive) return;
-        // Get cursor position
+
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            isMelee = !isMelee;
+            CheckCurrentWeapon();
+        }
+
         Ray rayFromCameraToCursor = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane playerPlane = new Plane(Vector3.up, transform.position);
         playerPlane.Raycast(rayFromCameraToCursor, out float distanceFromCamera);
@@ -48,13 +58,6 @@ public class PlayerController : MonoBehaviour {
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
-        // VER ESTO PARA QUE MIRE MOUSE,
-        // PERO PIERNAS CALCULEN VECTOR DE DIRECCION PA LA ANIMACION MAS ADELANTE
-        /*
-        if (moveInput != Vector2.zero) {
-            t.rotation = Quaternion.LookRotation(inputVector);
-        }
-        */
         if (!isDashing && Input.GetKeyDown(KeyCode.Space) && Time.time > dashCdTimer) {
             dashCdTimer = Time.time + 2f;
             dashTime = Time.time + dashDuration;
@@ -79,13 +82,10 @@ public class PlayerController : MonoBehaviour {
             return;
         }
         t.LookAt(cursorPosition);
-        /*
-        if (secondsSinceLastShot >= secondsBetweenShots && Input.GetButton("Fire1")) {
-            Instantiate(bulletPrefab, t.position + t.forward + t.up * bulletHeight, t.rotation);
-            secondsSinceLastShot = 0;
-        }
-        */
         AttackHandler();
+    }
+    private void CheckCurrentWeapon() {
+        //aca decidir animaciones y objeto a mostrar dependiendo si es melee o rango.
     }
     private void FixedUpdate() {
         if (!isAlive) return;
@@ -109,19 +109,39 @@ public class PlayerController : MonoBehaviour {
         }
     }
     private void AttackHandler() {
-        if(Input.GetMouseButtonDown(0) && Time.time > NextBasicAttack) {
-            NextBasicAttack = Time.time + basicAttackCooldown;
-            print("Atacando!");
-            Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f) + (t.forward * attackSphereForwardOffset);
-            //int lm = 1 << 11;
-            Collider[] hitCollider = Physics.OverlapSphere(attackSphereCenter, attackSphereRadius);
+        if (isMelee) {
+            if (Input.GetMouseButtonDown(0) && Time.time > NextBasicAttack) {
+                NextBasicAttack = Time.time + basicAttackCooldown;
+                //print("Atacando!");
+                Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f) + (t.forward * attackSphereForwardOffset);
+                //int lm = 1 << 11;
+                Collider[] hitCollider = Physics.OverlapSphere(attackSphereCenter, attackSphereRadius);
 
-            if(hitCollider != null && hitCollider.Length > 0) {
-                for (int i = 0; i < hitCollider.Length; i++) {
-                    if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy)) {
-                        enemy.GetDamage(basicAttackDamage);
+                if (hitCollider != null && hitCollider.Length > 0) {
+                    for (int i = 0; i < hitCollider.Length; i++) {
+                        if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy)) {
+                            enemy.GetDamage(basicAttackDamage);
+                        }
                     }
                 }
+            }
+        }
+        else {
+            if (Input.GetMouseButton(0) && Time.time > NextBasicAttack) {
+                NextBasicAttack = Time.time + rangeAttackCooldown;
+                //print("Atacando!");
+                Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f);
+                //int lm = 1 << 11;
+                Collider[] hitCollider = Physics.OverlapSphere(attackSphereCenter, rangeAttackRadius);
+
+                if (hitCollider != null && hitCollider.Length > 0) {
+                    for (int i = 0; i < hitCollider.Length; i++) {
+                        if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy)) {
+                            enemy.GetDamage(basicAttackDamage);
+                        }
+                    }
+                }
+
             }
         }
     }

@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
         playerTarget.canDrive = true;
         yield return new WaitForSeconds(0.1f);
         CameraRig.instance.SnapCamera();
+        yield return new WaitForSeconds(0.3f);
+        Fader.instance.FadeIn();
     }
     public static Transform GetRandomPatrolPoint() {
         if (instance == null) return null;
