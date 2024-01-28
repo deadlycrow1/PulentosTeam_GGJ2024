@@ -7,6 +7,7 @@ using UnityEngine.VFX;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
+    public GameObject deadBtn;
     public Animator anim;
     public float health = 100f;
     public bool isAlive = true;
@@ -241,6 +242,7 @@ public class PlayerController : MonoBehaviour
             health = 0;
             isAlive = false;
             anim.SetTrigger("Death");
+            deadBtn.SetActive(true);
         }
     }
     IEnumerator FixRotationSeq() {
