@@ -21,7 +21,7 @@ public class CameraRig : MonoBehaviour
         if (playerTarget == null) return;
         t.position = Vector3.Lerp(t.position, playerTarget.position, Time.deltaTime * lerpSpeed);
         if (Input.GetMouseButton(1)) {
-            curRot += Input.GetAxis("Mouse X") * Time.deltaTime * 50f;
+            curRot += Input.GetAxis("Mouse X") * Time.deltaTime * 60f;
         }
         t.rotation = Quaternion.Slerp(t.rotation, Quaternion.Euler(Vector3.up * curRot), Time.deltaTime * 3f);
         if(Input.mouseScrollDelta.y != 0) {

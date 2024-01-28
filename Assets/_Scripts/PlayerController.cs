@@ -240,6 +240,7 @@ public class PlayerController : MonoBehaviour
             //se muere el pj
             health = 0;
             isAlive = false;
+            anim.SetTrigger("Death");
         }
     }
     IEnumerator FixRotationSeq() {

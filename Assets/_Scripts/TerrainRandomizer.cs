@@ -69,6 +69,29 @@ public class TerrainRandomizer : MonoBehaviour {
     public TerrainGenerationProfile profileOverride;
 
     [Button("Randomize Terrain")]
+    public void GenerateRandomTerrainWithProfile(TerrainGenerationProfile newProfile) {
+        Debug.Log("Generando terreno desde perfil: "+ newProfile.name);
+        randomizeSeed = false;
+        profileOverride = newProfile;
+        ProcessProfileOverride();
+        Random.InitState(seed);
+        if (!cachedTerrain) {
+            cachedTerrain = GetComponent<Terrain>();
+        }
+        cachedTerrain.terrainData = RandomizeTerrain(cachedTerrain.terrainData);
+
+        if (circularFade) {
+            CircularFadeTerrain();
+        }
+        if (flattenIntensity > 0f) {
+            FlattenTerrain();
+        }
+        if (blurIntensity > 0f) {
+            BlurTerrain();
+        }
+        ResetDefaults();
+        GenerateSplatMap();
+    }
     public void GenerateRandomTerrain() {
         if (randomizeSeed) {
             seed = Random.Range(1, 1000000);
@@ -101,6 +124,7 @@ public class TerrainRandomizer : MonoBehaviour {
         instance.GenerateRandomTerrain();
     }
     private void Awake() {
+        /*
         if (randomizeSeed) {
             seed = Random.Range(1, 1000000);
         }
@@ -120,15 +144,18 @@ public class TerrainRandomizer : MonoBehaviour {
         }
         ResetDefaults();
         GenerateSplatMap();
+        */
     }
     private void ProcessProfileOverride() {
         if (profileOverride == null) return;
         randomizeSeed = profileOverride.randomizeSeed;
         seed = profileOverride.seed;
+        /*
         if (randomizeSeed) {
             seed = Random.Range(1, 1000000);
             profileOverride.seed = seed;
         }
+        */
         octaves = profileOverride.octaves;
         octavesIncrementalVariance = profileOverride.octavesIncrementalVariance;
         scale = profileOverride.scale;

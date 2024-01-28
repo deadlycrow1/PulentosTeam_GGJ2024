@@ -507,6 +507,7 @@ MonoBehaviour:
   enemyMesh: {fileID: 7327285641813974513}
   enemyBar: {fileID: 6860554538391209707}
   vfxHahas: {fileID: 4787401633196817314}
+  latigoPrefab: {fileID: 0}
   LaughHoldTime: 2
 --- !u!136 &4022889298306068266
 CapsuleCollider:
@@ -572,6 +573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDmg: 10
   attackAngleRange: 0.3
+  currentAttackIndex: 0
 --- !u!137 &7327285641813974513 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -6764626939893316631, guid: 78d2f87f79d65574e82cd21edf71ed03,
@@ -586,6 +588,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4628066159450012147}
     m_Modifications:
+    - target: {fileID: 115356445164231299, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 115356445164231299, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 115356445164231299, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.28625885
+      objectReference: {fileID: 0}
+    - target: {fileID: 115356445164231299, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.3966941
+      objectReference: {fileID: 0}
+    - target: {fileID: 162529884594548795, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1048897874335645696, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
         type: 3}
       propertyPath: m_Layer
@@ -605,6 +632,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912330207770193832, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.7464868
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912330207770193832, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.378
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912330207770193832, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.5732422
+      objectReference: {fileID: 0}
+    - target: {fileID: 2912330207770193832, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.21299982
       objectReference: {fileID: 0}
     - target: {fileID: 3086050955530557027, guid: 4cd1b24bec3f6224aace9bcc57b1a0e3,
         type: 3}

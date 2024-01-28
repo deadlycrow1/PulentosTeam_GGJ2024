@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
     IEnumerator Start() {
-        terrainRandomizer.profileOverride = terrainProfiles[Random.Range(0, terrainProfiles.Length)];
-        terrainRandomizer.GenerateRandomTerrain();
+        
+        terrainRandomizer.GenerateRandomTerrainWithProfile(terrainProfiles[Random.Range(0, terrainProfiles.Length)]);
         yield return new WaitForSeconds(0.5f);
         RandomSpawner.instance.RandomSpawn();
         yield return new WaitForSeconds(0.2f);
