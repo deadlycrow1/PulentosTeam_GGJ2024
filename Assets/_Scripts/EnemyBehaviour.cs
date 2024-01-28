@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    public enum EnemyState { Idle, Walk, Attacking};
+    public enum EnemyState { Idle, Walk, Attacking, Laughing};
     public Animator anim;
     public bool isAggresive=true;
     public EnemyState enemyState;
@@ -16,19 +17,20 @@ public class EnemyBehaviour : MonoBehaviour
     public float depression = 100f;
     public SkinnedMeshRenderer enemyMesh;
     public EnemyBar enemyBar;
+    public VisualEffect vfxHahas;
 
     float maxDepression;
-    GameObject[] patrolPoints;
     float NextDecision, NextDistanceCheck, playerDistCheck, curPlayerDistance, attackCD;
     Transform t;
     Rigidbody rb;
+    public float LaughHoldTime = 2f;
+    float laughingTime;
     private void Awake() {
         maxDepression = depression;
         t = this.transform;
         rb = GetComponent<Rigidbody>();
     }
     private void Start() {
-        patrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoint");
         if (enemyBar) {
             enemyBar.SetupBar(maxDepression, depression, false);
         }
@@ -40,12 +42,8 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else {
             enemyState = EnemyState.Walk;
-            if (patrolPoints.Length == 0) return;
-            currentMoveTarget = GetRandomPatrolPoint();
+            currentMoveTarget = GameManager.GetRandomPatrolPoint();
         }
-    }
-    private Transform GetRandomPatrolPoint() {
-        return patrolPoints[Random.Range(0, patrolPoints.Length - 1)].transform;
     }
     private void Update() {
         if (Time.time > NextDecision) {
@@ -54,9 +52,33 @@ public class EnemyBehaviour : MonoBehaviour
         }
         PlayerCheck();
         AttackPlayerHandler();
+        if(laughingTime > 0) {
+            laughingTime -= Time.deltaTime;
+            enemyState = EnemyState.Laughing;
+        }
+        else {
+            if(enemyState== EnemyState.Laughing) {
+                enemyState = EnemyState.Idle;
+                vfxHahas.Stop();
+            }
+        }
         AnimationHandler();
     }
+    IEnumerator FixRotationSeq() {
+        float lerp = 0f;
+        Vector3 dirLook = currentMoveTarget.position - t.position;
+        dirLook.y = 0;
+        Quaternion initRot = t.rotation;
+        Quaternion lookRot = Quaternion.LookRotation(dirLook);
 
+        while (lerp < 1f) {
+            t.rotation = Quaternion.Slerp(initRot, lookRot, lerp);
+            lerp += Time.deltaTime / 0.25f;
+            yield return new WaitForEndOfFrame();
+        }
+
+        t.rotation = lookRot;
+    }
     private void AttackPlayerHandler() {
         if (!isAggresive) return;
         if (playerInRange) {
@@ -64,6 +86,7 @@ public class EnemyBehaviour : MonoBehaviour
                 attackCD = Time.time + attackCooldownTime;
                 anim.SetTrigger("Attack");
                 enemyState = EnemyState.Attacking;
+                StartCoroutine(FixRotationSeq());
             }
         }
         else {
@@ -75,7 +98,8 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
     private void PlayerCheck() {
-        if (PlayerController.instance == null || !isAggresive) return;
+        if (PlayerController.instance == null) return;
+        if (!isAggresive) return;
         if(Time.time > playerDistCheck) {
             playerDistCheck = Time.time + Random.Range(0.1f,0.3f);
             curPlayerDistance = Vector3.Distance(t.position, PlayerController.instance.transform.position);
@@ -101,16 +125,11 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
     private void AnimationHandler() {
-        float tSpeed = 0;
-        switch (enemyState) {
-            case EnemyState.Idle:
-            case EnemyState.Attacking:
-                tSpeed = 0;
-                break;
-            case EnemyState.Walk:
-                tSpeed = 1;
-                break;
+        float tSpeed = 0f;
+        if(enemyState == EnemyState.Walk) {
+            tSpeed = 1f;
         }
+        anim.SetBool("Laugh", enemyState == EnemyState.Laughing);
         anim.SetFloat("Speed", tSpeed, 0.15f, Time.deltaTime);
         anim.SetFloat("Stance", playerDetected && isAggresive ? 1f:0f, 0.15f, Time.deltaTime);
     }
@@ -129,5 +148,47 @@ public class EnemyBehaviour : MonoBehaviour
         t.rotation = Quaternion.Slerp(t.rotation, Quaternion.LookRotation(dirLook), Time.deltaTime * rotationSpeed);
 
         rb.MovePosition(t.position + (t.forward.normalized * moveSpeed * Time.deltaTime));
+    }
+    public void GetDamage(float dmgPoints) {
+        if (!isAggresive) return;
+        if (depression > 0) {
+            depression -= dmgPoints;
+            if (enemyBar != null) {
+                enemyBar.RefreshValue(depression, true);
+            }
+            vfxHahas.Play();
+            laughingTime = LaughHoldTime;
+            anim.ResetTrigger("Attack");
+        }
+        else {
+            depression = 0;
+            isAggresive = false;
+            laughingTime = 0;
+            playerDetected = false;
+            playerInRange = false;
+            vfxHahas.Stop();
+            if (enemyState == EnemyState.Laughing) {
+                enemyState = EnemyState.Idle;
+            }
+            StartCoroutine(WipeDepressionSeq());
+            currentMoveTarget = GameManager.GetRandomPatrolPoint();
+            ProcessBrain();
+        }
+    }
+    IEnumerator WipeDepressionSeq() {
+        if (enemyBar != null) {
+            enemyBar.RefreshValue(depression, false);
+        }
+        float lerp = 1f;
+        while (lerp > 0f) {
+            if (enemyMesh) {
+                enemyMesh.material.SetFloat("_CorruptionLevel", lerp);
+            }
+            lerp -= Time.deltaTime / 1f;
+            yield return new WaitForEndOfFrame();
+        }
+        if (enemyMesh) {
+            enemyMesh.material.SetFloat("_CorruptionLevel", 0f);
+        }
     }
 }
