@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4076a7a322ce2074db4e8492e5544eb6, type: 3}
+  m_Name: BOSS_1 19
+  m_EditorClassIdentifier: 
+  randomizeSeed: 0
+  seed: 830261
+  octaves: 5
+  octavesIncrementalVariance: 0.075
+  scale: 9.8
+  circularFade: 1
+  circleRadius: 0.66
+  circularFadeExtraOffset: 0.475
+  circularFadePower: 0.172
+  waterHeightOffset: 25
+  grassNoiseScale: 0.66
+  grassRate: 0.8
+  flattenHeight: 62
+  flattenReach: 1
+  flattenIntensity: 0.356
+  blurAverageOfPreviousPixel: 0.918
+  blurIntensity: 0.707
