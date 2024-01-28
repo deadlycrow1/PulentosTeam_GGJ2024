@@ -617,7 +617,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u201CJose Revilla\u201D\n..."
+  m_text: "\u201CJose Revilla\u201D\nDise\xF1ador 3D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1697c6dc51189b245822b149d8a75a55, type: 2}
   m_sharedMaterial: {fileID: 918555593892087745, guid: 1697c6dc51189b245822b149d8a75a55,
@@ -1215,7 +1215,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: efb5ad71a5107b34891abf730367ddb8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2960,7 +2960,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u201CFredi Merkuri\u201D\n..."
+  m_text: "\u201CFredi Merkuri\u201D\nProgramador"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1697c6dc51189b245822b149d8a75a55, type: 2}
   m_sharedMaterial: {fileID: 918555593892087745, guid: 1697c6dc51189b245822b149d8a75a55,
@@ -3513,7 +3513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u201CBlakistas\u201D\n..."
+  m_text: "\u201CBlakistas\u201D\nDise\xF1ador 3D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1697c6dc51189b245822b149d8a75a55, type: 2}
   m_sharedMaterial: {fileID: 918555593892087745, guid: 1697c6dc51189b245822b149d8a75a55,
