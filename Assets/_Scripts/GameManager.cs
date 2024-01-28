@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
         }
         yield return new WaitForSeconds(0.3f);
         Fader.instance.FadeIn();
+        yield return new WaitForSeconds(0.3f);
+        playerTarget.canBeDamaged = true;
     }
     private void SpawnBoss() {
         Vector3 spawnPos = new Vector3(64f, 300f, 64f);

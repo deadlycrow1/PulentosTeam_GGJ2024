@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
     public float health = 100f;
     public bool isAlive = true;
+    public bool canBeDamaged = false;
     public bool canDrive = false;
     public bool isMelee = true;
     public PlayerWeaponHelper swordHelper, bookHelper;
@@ -233,6 +234,8 @@ public class PlayerController : MonoBehaviour
     }
     public void GetDamage(float dmgPoints)
     {
+        if (!canBeDamaged) return;
+
         if (health > 0)
         {
             health -= dmgPoints;
