@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public float basicAttackDamage = 20f;
     public float sphereAttackDamage = 10f;
     public float rangeAttackRadius = 2f;
+    public float rangeAttackDuration = 2f;
 
     public float rangeAttackCooldown = 0.25f;
     public float rangeAttackDamage = 2f;
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
     CapsuleCollider capsuleCollider;
     float NextBasicAttack;
     float NextSphereAttack;
+    float FinishAttack;
 
     void Awake()
     {
@@ -160,12 +162,13 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButton(0) && Time.time > NextBasicAttack)
             {
                 NextBasicAttack = Time.time + rangeAttackCooldown;
+                FinishAttack = Time.time + rangeAttackDuration;
                 //print("Atacando!");
                 Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f);
                 //int lm = 1 << 11;
                 Collider[] hitCollider = Physics.OverlapSphere(attackSphereCenter, rangeAttackRadius);
 
-                if (hitCollider != null && hitCollider.Length > 0)
+                if (hitCollider != null && hitCollider.Length > 0 && Time.time < FinishAttack)
                 {
                     for (int i = 0; i < hitCollider.Length; i++)
                     {
