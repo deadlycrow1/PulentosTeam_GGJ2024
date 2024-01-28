@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
+    public Slider hpBAR;
     public GameObject deadBtn;
     public Animator anim;
     public float health = 100f;
@@ -235,11 +237,13 @@ public class PlayerController : MonoBehaviour
         {
             health -= dmgPoints;
             anim.SetTrigger("GetHit");
+            hpBAR.value = health;
         }
         else
         {
             //se muere el pj
             health = 0;
+            hpBAR.value = health;
             isAlive = false;
             anim.SetTrigger("Death");
             deadBtn.SetActive(true);
