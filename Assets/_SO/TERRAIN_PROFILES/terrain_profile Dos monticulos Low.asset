@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4076a7a322ce2074db4e8492e5544eb6, type: 3}
-  m_Name: terrain_profile Zona Elevada Seca
+  m_Name: terrain_profile Dos monticulos Low
   m_EditorClassIdentifier: 
   randomizeSeed: 0
-  seed: 705252
+  seed: 366192
   octaves: 5
-  octavesIncrementalVariance: 0.108
-  scale: 5.7
+  octavesIncrementalVariance: 0.166
+  scale: 4.7
   circularFade: 1
-  circleRadius: 0.58
-  circularFadeExtraOffset: 0.444
-  circularFadePower: 0.469
+  circleRadius: 2.07
+  circularFadeExtraOffset: 0.47
+  circularFadePower: 0.057
   waterHeightOffset: 25
-  grassNoiseScale: 0.485
-  grassRate: 0.1
+  grassNoiseScale: 0.66
+  grassRate: 0.4
   flattenHeight: 62
   flattenReach: 1
-  flattenIntensity: 0.732
-  blurAverageOfPreviousPixel: 0.258
-  blurIntensity: 0.377
+  flattenIntensity: 0.547
+  blurAverageOfPreviousPixel: 0.151
+  blurIntensity: 0.887
