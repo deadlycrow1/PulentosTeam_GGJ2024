@@ -16,13 +16,13 @@ MonoBehaviour:
   prefabs:
   - {fileID: 8363282216379042474, guid: 2a0cc9560959aff45ad84893636d0592, type: 3}
   - {fileID: 8363282216379042474, guid: 0a8a20b457b2aa84687c79300f884893, type: 3}
-  targetAmount: 16000
+  targetAmount: 10000
   minimumDistance: 0.1
-  scaleRange: {x: 3, y: 2}
-  verticalScaleRange: {x: 1, y: 2}
+  scaleRange: {x: 1.5, y: 3}
+  verticalScaleRange: {x: 0.3, y: 0.5}
   spawnOffset: {x: 0, y: -0.22, z: 0}
   alignToSurface: 1
-  alignmentRate: 0.75
+  alignmentRate: 1
   discardXYAxis: 0
   randomizeRotation: 1
   randomRotationAxis: {x: 0, y: 1, z: 0}

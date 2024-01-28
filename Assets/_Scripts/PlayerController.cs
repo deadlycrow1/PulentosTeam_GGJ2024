@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public bool isAlive = true;
     public bool canDrive = false;
     public bool isMelee = true;
+    public PlayerWeaponHelper swordHelper, bookHelper;
     public bool isAttacking = false;
     public bool isGrounded;
     public bool isDashing;
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
     public float rangeAttackCooldown = 0.25f;
     public float rangeAttackDamage = 2f;
 
-    Vector3 dashDirection;
+    Vector3 dashDirection, cursorPosition;
     CapsuleCollider capsuleCollider;
     float NextBasicAttack;
     float NextSphereAttack;
@@ -55,6 +56,8 @@ public class PlayerController : MonoBehaviour
 
         sporeSphereBehaviour sphereBheaviour = sporeSpherePrefab.GetComponent<sporeSphereBehaviour>();
         sphereBheaviour.sphereAttackRadius = attackSphereRadius;
+        swordHelper.isSocketA = true;
+        bookHelper.isSocketA = false;
     }
     void Update()
     {
@@ -70,7 +73,7 @@ public class PlayerController : MonoBehaviour
         Ray rayFromCameraToCursor = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane playerPlane = new Plane(Vector3.up, transform.position);
         playerPlane.Raycast(rayFromCameraToCursor, out float distanceFromCamera);
-        Vector3 cursorPosition = rayFromCameraToCursor.GetPoint(distanceFromCamera);
+        cursorPosition = rayFromCameraToCursor.GetPoint(distanceFromCamera);
 
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
@@ -101,6 +104,10 @@ public class PlayerController : MonoBehaviour
                     rollDelay -= Time.deltaTime;
                     return;
                 }
+                if(dashDirection == Vector3.zero) {
+                    dashDirection = t.forward.normalized;
+                    dashDirection.y = 0;
+                }
                 t.position += (dashDirection.normalized * dashSpeed * Time.deltaTime);
             }
             if (Time.time > dashTime) {
@@ -108,7 +115,7 @@ public class PlayerController : MonoBehaviour
             }
             return;
         }
-        t.LookAt(cursorPosition);
+        //t.LookAt(cursorPosition);
         AttackHandler();
         AnimationHandler();
         if (isAttacking) {
@@ -120,6 +127,9 @@ public class PlayerController : MonoBehaviour
     private void CheckCurrentWeapon()
     {
         //aca decidir animaciones y objeto a mostrar dependiendo si es melee o rango.
+        swordHelper.SwitchSocket();
+        bookHelper.SwitchSocket();
+        anim.SetBool("IsBook", !isMelee);
     }
     private void AnimationHandler() {
         float tMove = 0;
@@ -138,6 +148,7 @@ public class PlayerController : MonoBehaviour
         inputVector.y = 0;
         if (moveInput != Vector2.zero)
         {
+            t.rotation = Quaternion.Slerp(t.rotation, Quaternion.LookRotation(inputVector), Time.deltaTime * 6f) ;
             playerRb.MovePosition(t.position + inputVector.normalized * speed * Time.deltaTime); // Actually move there
         }
     }
@@ -155,51 +166,43 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
-    private void AttackHandler()
-    {
-        if (isMelee)
-        {
-            if (Input.GetMouseButtonDown(0) && Time.time > NextBasicAttack)
-            {
+    private void AttackHandler() {
+        if (isMelee) {
+            if (Input.GetMouseButtonDown(0) && Time.time > NextBasicAttack) {
+                StartCoroutine(FixRotationSeq());
                 NextBasicAttack = Time.time + basicAttackCooldown;
                 isAttacking = true;
                 isAttackingHoldTime = Time.time + 0.5f;
+                anim.SetTrigger("Attack");
                 //print("Atacando!");
                 Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f) + (t.forward * attackSphereForwardOffset);
                 //int lm = 1 << 11;
                 Collider[] hitCollider = Physics.OverlapSphere(attackSphereCenter, attackSphereRadius);
 
-                if (hitCollider != null && hitCollider.Length > 0)
-                {
-                    for (int i = 0; i < hitCollider.Length; i++)
-                    {
-                        if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy))
-                        {
+                if (hitCollider != null && hitCollider.Length > 0) {
+                    for (int i = 0; i < hitCollider.Length; i++) {
+                        if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy)) {
                             enemy.GetDamage(basicAttackDamage);
                         }
                     }
                 }
             }
         }
-        else
-        {
-            if (Input.GetMouseButton(0) && Time.time > NextBasicAttack)
-            {
+        else {
+            if (Input.GetMouseButton(0) && Time.time > NextBasicAttack) {
+                StartCoroutine(FixRotationSeq());
                 NextBasicAttack = Time.time + rangeAttackCooldown;
                 isAttacking = true;
-                isAttackingHoldTime = Time.time + 0.5f;
+                isAttackingHoldTime = Time.time + 0.66f;
                 FinishAttack = Time.time + rangeAttackDuration;
                 //print("Atacando!");
                 Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f);
                 //int lm = 1 << 11;
                 Collider[] hitCollider = Physics.OverlapSphere(attackSphereCenter, rangeAttackRadius);
 
-                if (hitCollider != null && hitCollider.Length > 0 && Time.time < FinishAttack)
-                {
-                    for (int i = 0; i < hitCollider.Length; i++)
-                    {
-                        if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy))
-                        {
+                if (hitCollider != null && hitCollider.Length > 0 && Time.time < FinishAttack) {
+                    for (int i = 0; i < hitCollider.Length; i++) {
+                        if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy)) {
                             enemy.GetDamage(basicAttackDamage);
                         }
                     }
@@ -208,25 +211,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time > NextSphereAttack)
-        {
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > NextSphereAttack) {
             NextSphereAttack = Time.time + sphereAttackCooldown;
             print("Esfera!");
-            Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f) + (t.forward * attackSphereForwardOffset);
-            Collider[] hitCollider = Physics.OverlapSphere(attackSphereCenter, attackSphereRadius);
-            Instantiate(sporeSpherePrefab, attackSphereCenter, Quaternion.identity);
-            if (hitCollider != null && hitCollider.Length > 0)
-            {
-
-                for (int i = 0; i < hitCollider.Length; i++)
-                {
-                    if (hitCollider[i].gameObject.TryGetComponent(out EnemyBehaviour enemy))
-                    {
-                        enemy.GetDamage(sphereAttackDamage);
-                    }
-                }
-            }
+            anim.SetTrigger("Spores");
+            Invoke(nameof(SporesDelayed), 1.33f);
         }
+    }
+    private void SporesDelayed() {
+        Instantiate(sporeSpherePrefab, t.position, Quaternion.identity);
     }
     public void GetDamage(float dmgPoints)
     {
@@ -241,6 +234,20 @@ public class PlayerController : MonoBehaviour
             health = 0;
             isAlive = false;
         }
+    }
+    IEnumerator FixRotationSeq() {
+        float lerp = 0f;
+        Vector3 dirLook = cursorPosition - t.position;
+        dirLook.y = 0;
+        Quaternion initRot = t.rotation;
+        Quaternion lookRot = Quaternion.LookRotation(dirLook);
+
+        while (lerp < 1f) {
+            t.rotation = Quaternion.Slerp(initRot, lookRot, lerp);
+            lerp += Time.deltaTime / 0.1f;
+            yield return new WaitForEndOfFrame();
+        }
+        t.rotation = lookRot;
     }
 }
 

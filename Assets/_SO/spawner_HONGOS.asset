@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 7129372859612587676, guid: 8a3e4147e2eb4394abc4f3dc6865e54d, type: 3}
   targetAmount: 900
   minimumDistance: 0.5
-  scaleRange: {x: 0.3, y: 1.5}
+  scaleRange: {x: 0.3, y: 3}
   verticalScaleRange: {x: 0.7, y: 3}
   spawnOffset: {x: 0, y: 0, z: 0}
   alignToSurface: 1

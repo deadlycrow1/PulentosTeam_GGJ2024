@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class sporeSphereBehaviour : MonoBehaviour
 {
+    public VisualEffect sporesVFX;
     private Transform t;
     public float sphereRadius;
     public float secondsUntilDestroyed;
@@ -11,25 +14,28 @@ public class sporeSphereBehaviour : MonoBehaviour
     public float sphereAttackRadius;
 
     public float sphereAttackDamage = 10f;
+    bool setToDestroy;
 
     // Start is called before the first frame update
     void Awake()
     {
         t = gameObject.transform;
-        t.localScale *= sphereRadius;
     }
 
     // Update is called once per frame
     void Update()
     {
-        secondsUntilDestroyed -= Time.deltaTime;
-        if (secondsUntilDestroyed < 1)
-        {
-            transform.localScale *= secondsUntilDestroyed;
-        }
         if (secondsUntilDestroyed < 0)
         {
-            Destroy(gameObject);
+            if (!setToDestroy) {
+                setToDestroy = true;
+                sporesVFX.Stop();
+                Invoke(nameof(DestroyDelayed), 5f);
+            }
+            return;
+        }
+        else {
+            secondsUntilDestroyed -= Time.deltaTime;
         }
 
         Collider[] hitCollider = Physics.OverlapSphere(transform.position, sphereAttackRadius);
@@ -44,5 +50,9 @@ public class sporeSphereBehaviour : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void DestroyDelayed() {
+        Destroy(gameObject);
     }
 }

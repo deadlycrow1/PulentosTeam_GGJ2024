@@ -17,7 +17,7 @@ public class PlayerWeaponHelper : MonoBehaviour
     }
     private void Update() {
         float tSpeed = 0f;
-        if (pc.isMelee) {
+        if (isSocketA) {
             tSpeed = 1f;
             if (pc.isAttacking) {
                 tSpeed = 2f;

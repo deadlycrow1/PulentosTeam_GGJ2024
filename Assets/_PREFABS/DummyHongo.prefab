@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2879207350484657220}
+  - component: {fileID: 5337543981416053085}
   m_Layer: 12
   m_Name: BOOK
   m_TagString: Untagged
@@ -32,6 +33,27 @@ Transform:
   - {fileID: 2201609822723186793}
   m_Father: {fileID: 5881222887581847484}
   m_LocalEulerAnglesHint: {x: -3.17, y: -0.39, z: 14.038}
+--- !u!95 &5337543981416053085
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626094946455937996}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1dd48ee3229f18741a4952a3cde60e5d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1226006316870196958
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSocketA: 0
   pc: {fileID: 2448128605558086088}
-  anim: {fileID: 2370497958004065065}
+  anim: {fileID: 5337543981416053085}
   socket_A: {fileID: 6552746472772262467}
   socket_B: {fileID: 3043971486192328688}
 --- !u!1001 &478316079746167398
@@ -442,6 +464,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -13.937988
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 68aaed95ca2a4664e88292d87ad066e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a9a90789b0f53b6468fe72180b753844, type: 2}
     - target: {fileID: 919132149155446097, guid: 68aaed95ca2a4664e88292d87ad066e6,
         type: 3}
       propertyPath: m_Name
@@ -883,7 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5deac2b0c35914db4310e7a4cd6de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSocketA: 0
+  isSocketA: 1
   pc: {fileID: 2448128605558086088}
   anim: {fileID: 2370497958004065065}
   socket_A: {fileID: 9120748846982217622}
@@ -1047,6 +1074,8 @@ MonoBehaviour:
   isAlive: 1
   canDrive: 0
   isMelee: 1
+  swordHelper: {fileID: 4663781671096990303}
+  bookHelper: {fileID: 837220700894103638}
   isAttacking: 0
   isGrounded: 0
   isDashing: 0
@@ -1056,9 +1085,9 @@ MonoBehaviour:
   sporeSpherePrefab: {fileID: 6328741900795305521, guid: 41818d75ff047fc44a76f4832ef37650,
     type: 3}
   basicAttackCooldown: 0.2
-  sphereAttackCooldown: 3
-  attackSphereRadius: 1
-  attackSphereForwardOffset: 0.8
+  sphereAttackCooldown: 10
+  attackSphereRadius: 1.5
+  attackSphereForwardOffset: 0.9
   basicAttackDamage: 2
   sphereAttackDamage: 10
   rangeAttackRadius: 2

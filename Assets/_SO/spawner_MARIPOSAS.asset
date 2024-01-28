@@ -15,13 +15,13 @@ MonoBehaviour:
   groundTypeIndex: 2
   prefabs:
   - {fileID: 5395237585681922474, guid: e4363865c0086fc46a77106911d384bd, type: 3}
-  targetAmount: 620
+  targetAmount: 100
   minimumDistance: 3
-  scaleRange: {x: 0.5, y: 1.2}
-  verticalScaleRange: {x: 0.7, y: 1.5}
+  scaleRange: {x: 1, y: 1}
+  verticalScaleRange: {x: 1, y: 1}
   spawnOffset: {x: 0, y: -0.1, z: 0}
   alignToSurface: 1
-  alignmentRate: 0.2
+  alignmentRate: 1
   discardXYAxis: 0
   randomizeRotation: 1
   randomRotationAxis: {x: 0, y: 1, z: 0}
