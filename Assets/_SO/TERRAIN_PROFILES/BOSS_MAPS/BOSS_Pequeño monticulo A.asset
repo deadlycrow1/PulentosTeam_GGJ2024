@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4076a7a322ce2074db4e8492e5544eb6, type: 3}
-  m_Name: terrain_profile Planicie C Seca
+  m_Name: "BOSS_Peque\xF1o monticulo A"
   m_EditorClassIdentifier: 
   randomizeSeed: 0
-  seed: 188242
+  seed: 503632
   octaves: 5
-  octavesIncrementalVariance: 0.464
-  scale: 6.2
+  octavesIncrementalVariance: 0.201
+  scale: 15.3
   circularFade: 1
-  circleRadius: 0.66
-  circularFadeExtraOffset: 0.516
-  circularFadePower: 0.172
+  circleRadius: 1.12
+  circularFadeExtraOffset: 0.475
+  circularFadePower: 0.533
   waterHeightOffset: 25
-  grassNoiseScale: 0.66
-  grassRate: 0.1
+  grassNoiseScale: 0.223
+  grassRate: 0.044
   flattenHeight: 62
   flattenReach: 1
   flattenIntensity: 0.356
-  blurAverageOfPreviousPixel: 0.918
-  blurIntensity: 0.5
+  blurAverageOfPreviousPixel: 0.964
+  blurIntensity: 0.551
