@@ -33,7 +33,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature.001|Armature.001|mixamo.com|Layer0
+      name: rosa_atk_explosion
       takeName: Armature.001|Armature.001|mixamo.com|Layer0
       internalID: 2073693694548410006
       firstFrame: 0
@@ -62,7 +62,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.001|Armature.002|mixamo.com|Layer0
+      name: rosa_atk_1
       takeName: Armature.001|Armature.002|mixamo.com|Layer0
       internalID: -814350548788644060
       firstFrame: 0
@@ -178,7 +178,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.001|Armature.006|mixamo.com|Layer0
+      name: rosa_atk_2_grito
       takeName: Armature.001|Armature.006|mixamo.com|Layer0
       internalID: 266496242640474244
       firstFrame: 0
@@ -302,13 +302,13 @@ ModelImporter:
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 180
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
-    normalSmoothingSource: 0
+    normalSmoothingSource: 2
   referencedClips: []
   importAnimation: 1
   humanDescription:
@@ -322,7 +322,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.018
+    globalScale: 1.8
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

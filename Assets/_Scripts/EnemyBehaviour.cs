@@ -7,6 +7,7 @@ using UnityEngine.VFX;
 public class EnemyBehaviour : MonoBehaviour
 {
     public enum EnemyState { Idle, Walk, Attacking, Laughing};
+    public bool isBoss;
     public Animator anim;
     public bool isAggresive=true;
     public EnemyState enemyState;
@@ -113,7 +114,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         else {
             playerDetected = false;
-            if (enemyBar) {
+            if (enemyBar &&!isBoss) {
                 enemyBar.RefreshValue(depression, false);
             }
         }
