@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49340b626915e0b4f8a0ef382041debf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoss: 0
+  isBoss: 1
   anim: {fileID: 4945368367646845762}
   isAggresive: 1
   enemyState: 0
@@ -1257,6 +1257,8 @@ MonoBehaviour:
   enemyMesh: {fileID: 2883229416174632483}
   enemyBar: {fileID: 8239992606912039046}
   vfxHahas: {fileID: 2788926529582414934}
+  latigoPrefab: {fileID: 2336441490137549511, guid: 4c668b0693551624f860c928254361fa,
+    type: 3}
   LaughHoldTime: 2
 --- !u!114 &2119437105167116549
 MonoBehaviour:
@@ -1271,7 +1273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDmg: 50
-  attackAngleRange: 0.2
+  attackAngleRange: 0.3
 --- !u!136 &7690027721342872689
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1291,10 +1293,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 1.5108643
   m_Height: 8
   m_Direction: 1
-  m_Center: {x: 0, y: 4, z: 0}
+  m_Center: {x: 0, y: 4, z: 0.51086426}
 --- !u!54 &4661306535890701323
 Rigidbody:
   m_ObjectHideFlags: 0
