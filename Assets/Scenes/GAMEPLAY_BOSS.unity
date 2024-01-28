@@ -211,6 +211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Rose
       objectReference: {fileID: 0}
+    - target: {fileID: 7467364948407261010, guid: c2181a44c2124e647ac78794068d4554,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7848288125321530856, guid: c2181a44c2124e647ac78794068d4554,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -259,6 +264,11 @@ PrefabInstance:
     - target: {fileID: 7848288125321530856, guid: c2181a44c2124e647ac78794068d4554,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8143101331649977051, guid: c2181a44c2124e647ac78794068d4554,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
