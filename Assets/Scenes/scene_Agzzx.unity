@@ -210,8 +210,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -21, y: 19, z: -21}
+  m_LocalRotation: {x: 0.2854945, y: 0.3639536, z: -0.11825568, w: 0.8786617}
+  m_LocalPosition: {x: -38.965622, y: 48.714813, z: -9.26713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -589,6 +589,51 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 490633480234169231, guid: f73653143f64b0e47b9212fb1bf8132a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490633480234169231, guid: f73653143f64b0e47b9212fb1bf8132a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 490633480234169231, guid: f73653143f64b0e47b9212fb1bf8132a,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 943144580884491149, guid: f73653143f64b0e47b9212fb1bf8132a,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 943144580884491149, guid: f73653143f64b0e47b9212fb1bf8132a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576304856015428907, guid: f73653143f64b0e47b9212fb1bf8132a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.48976278
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576304856015428907, guid: f73653143f64b0e47b9212fb1bf8132a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.08126928
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576304856015428907, guid: f73653143f64b0e47b9212fb1bf8132a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.8563502
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576304856015428907, guid: f73653143f64b0e47b9212fb1bf8132a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.14209934
+      objectReference: {fileID: 0}
     - target: {fileID: 4628066159450012147, guid: f73653143f64b0e47b9212fb1bf8132a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -688,20 +733,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2448128605558086088, guid: b7301cca552fbb84981b942618f3e6ee,
+        type: 3}
+      propertyPath: sporeSpherePrefab
+      value: 
+      objectReference: {fileID: 6328741900795305521, guid: 41818d75ff047fc44a76f4832ef37650,
+        type: 3}
     - target: {fileID: 5860873400588183650, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 121.90217
+      value: 115.714745
       objectReference: {fileID: 0}
     - target: {fileID: 5860873400588183650, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 132.83319
+      value: 122.782135
       objectReference: {fileID: 0}
     - target: {fileID: 5860873400588183650, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 132.34633
+      value: 105.80664
       objectReference: {fileID: 0}
     - target: {fileID: 5860873400588183650, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
@@ -950,22 +1001,22 @@ MonoBehaviour:
   length: 256
   height: 256
   randomizeSeed: 0
-  seed: 705252
+  seed: 188242
   octaves: 5
-  octavesIncrementalVariance: 0.108
-  scale: 11.6
+  octavesIncrementalVariance: 0.464
+  scale: 6.2
   circularFade: 1
-  circleRadius: 0.32
-  circularFadeExtraOffset: 0.485
-  circularFadePower: 0.443
+  circleRadius: 0.66
+  circularFadeExtraOffset: 0.516
+  circularFadePower: 0.172
   waterHeightOffset: 25
-  grassNoiseScale: 0.485
-  grassRate: 0.295
+  grassNoiseScale: 0.66
+  grassRate: 0.356
   flattenHeight: 62
   flattenReach: 1
-  flattenIntensity: 0.737
-  blurAverageOfPreviousPixel: 0.279
-  blurIntensity: 0.809
+  flattenIntensity: 0.356
+  blurAverageOfPreviousPixel: 0.918
+  blurIntensity: 0.5
   profileOverride: {fileID: 11400000, guid: 0b95dbf5afd02e34395a82eb0a112f28, type: 2}
 --- !u!154 &2003058185
 TerrainCollider:

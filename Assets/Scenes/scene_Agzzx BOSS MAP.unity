@@ -941,24 +941,24 @@ MonoBehaviour:
   width: 256
   length: 256
   height: 256
-  randomizeSeed: 0
-  seed: 830261
+  randomizeSeed: 1
+  seed: 575087
   octaves: 5
   octavesIncrementalVariance: 0.201
-  scale: 12.4
+  scale: 9.8
   circularFade: 1
   circleRadius: 0.66
-  circularFadeExtraOffset: 0.449
-  circularFadePower: 0.351
+  circularFadeExtraOffset: 0.475
+  circularFadePower: 0.459
   waterHeightOffset: 25
-  grassNoiseScale: 0.485
+  grassNoiseScale: 0.66
   grassRate: 0.023
   flattenHeight: 62
   flattenReach: 1
   flattenIntensity: 0.356
-  blurAverageOfPreviousPixel: 0.604
-  blurIntensity: 0.32
-  profileOverride: {fileID: 11400000, guid: d9e023178f0132741a6180268d4ffa54, type: 2}
+  blurAverageOfPreviousPixel: 0.5
+  blurIntensity: 0.165
+  profileOverride: {fileID: 11400000, guid: 1f408b562057e554d869232137aa9a4d, type: 2}
 --- !u!154 &2003058185
 TerrainCollider:
   m_ObjectHideFlags: 0

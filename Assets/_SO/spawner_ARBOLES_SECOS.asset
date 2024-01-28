@@ -16,7 +16,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 7853929774977872710, guid: b6e34a88d306d5d4e8b274fddfe8847c, type: 3}
   targetAmount: 620
-  minimumDistance: 3
+  minimumDistance: 7
   scaleRange: {x: 0.5, y: 1.2}
   verticalScaleRange: {x: 0.7, y: 1.5}
   spawnOffset: {x: 0, y: -0.1, z: 0}

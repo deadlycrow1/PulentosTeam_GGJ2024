@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44be3f78f52f4964e98658f95ed6d905, type: 3}
   m_Name: spawner_ARBOLES
   m_EditorClassIdentifier: 
-  groundTypeIndex: 2
+  groundTypeIndex: 1
   prefabs:
   - {fileID: 4326792997143558968, guid: 8888be78756d2b74abdc2e09c0133cf8, type: 3}
   - {fileID: 4326792997143558968, guid: 109277754ac9f1747838e89b1e4fbc72, type: 3}
