@@ -501,7 +501,8 @@ MonoBehaviour:
   width: 256
   length: 256
   height: 256
-  seed: 6782
+  randomizeSeed: 1
+  seed: 370876
   octaves: 5
   octavesIncrementalVariance: 0.191
   scale: 12.8
@@ -512,6 +513,12 @@ MonoBehaviour:
   waterHeightOffset: 33
   grassNoiseScale: 0.114
   grassRate: 0.623
+  flattenHeight: 62
+  flattenReach: 1
+  flattenIntensity: 0.5
+  blurAverageOfPreviousPixel: 0.3
+  blurIntensity: 0.3
+  profileOverride: {fileID: 0}
 --- !u!154 &369171693
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -777,7 +784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638a87bae85e5db4ab3e46490848895e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
 --- !u!136 &974752627
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -813,6 +819,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49340b626915e0b4f8a0ef382041debf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  isAggresive: 1
+  enemyState: 0
+  decisionTimeRange: {x: 0, y: 0}
+  currentMoveTarget: {fileID: 0}
+  moveSpeed: 0
+  rotationSpeed: 0
+  playerDetectionDistance: 0
+  playerAttackRange: 0
+  attackCooldownTime: 0
+  playerDetected: 0
+  playerInRange: 0
+  depression: 100
+  enemyMesh: {fileID: 0}
+  enemyBar: {fileID: 0}
+  vfxHahas: {fileID: 0}
+  LaughHoldTime: 2
 --- !u!1001 &1113017321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1079,6 +1102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448128605558086088, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
+      propertyPath: canDrive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448128605558086088, guid: b7301cca552fbb84981b942618f3e6ee,
+        type: 3}
       propertyPath: dashForce
       value: 20
       objectReference: {fileID: 0}
@@ -1094,8 +1122,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448128605558086088, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
+      propertyPath: swordPrefab
+      value: 
+      objectReference: {fileID: 6834122152377137895, guid: 7af489d7e94c1ac439430223ea3aaf23,
+        type: 3}
+    - target: {fileID: 2448128605558086088, guid: b7301cca552fbb84981b942618f3e6ee,
+        type: 3}
       propertyPath: bulletHeight
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2448128605558086088, guid: b7301cca552fbb84981b942618f3e6ee,
+        type: 3}
+      propertyPath: sporeSpherePrefab
+      value: 
+      objectReference: {fileID: 6328741900795305521, guid: 41818d75ff047fc44a76f4832ef37650,
+        type: 3}
+    - target: {fileID: 2448128605558086088, guid: b7301cca552fbb84981b942618f3e6ee,
+        type: 3}
+      propertyPath: attackSphereRadius
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5860873400588183650, guid: b7301cca552fbb84981b942618f3e6ee,
         type: 3}
