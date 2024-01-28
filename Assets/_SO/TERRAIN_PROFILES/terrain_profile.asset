@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: terrain_profile
   m_EditorClassIdentifier: 
   randomizeSeed: 0
-  seed: 705252
+  seed: 188242
   octaves: 5
-  octavesIncrementalVariance: 0.108
-  scale: 12.3
+  octavesIncrementalVariance: 0.464
+  scale: 6.2
   circularFade: 1
-  circleRadius: 0.32
-  circularFadeExtraOffset: 0.485
-  circularFadePower: 0.443
+  circleRadius: 0.66
+  circularFadeExtraOffset: 0.516
+  circularFadePower: 0.172
   waterHeightOffset: 25
   grassNoiseScale: 0.66
-  grassRate: 0.32
+  grassRate: 0.356
   flattenHeight: 62
   flattenReach: 1
-  flattenIntensity: 0.732
-  blurAverageOfPreviousPixel: 0.258
-  blurIntensity: 0.377
+  flattenIntensity: 0.356
+  blurAverageOfPreviousPixel: 0.918
+  blurIntensity: 0.5

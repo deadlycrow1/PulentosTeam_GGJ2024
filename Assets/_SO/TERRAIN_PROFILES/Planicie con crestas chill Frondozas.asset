@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4076a7a322ce2074db4e8492e5544eb6, type: 3}
-  m_Name: terrain_profile 1
+  m_Name: Planicie con crestas chill Frondozas
   m_EditorClassIdentifier: 
   randomizeSeed: 0
-  seed: 6666
+  seed: 830261
   octaves: 5
-  octavesIncrementalVariance: 0.139
-  scale: 8.3
+  octavesIncrementalVariance: 0.075
+  scale: 9.8
   circularFade: 1
-  circleRadius: 0.23
-  circularFadeExtraOffset: 0.477
-  circularFadePower: 0.382
+  circleRadius: 0.66
+  circularFadeExtraOffset: 0.475
+  circularFadePower: 0.172
   waterHeightOffset: 25
-  grassNoiseScale: 0.439
-  grassRate: 0.64
+  grassNoiseScale: 0.66
+  grassRate: 0.8
   flattenHeight: 62
   flattenReach: 1
-  flattenIntensity: 0.507
-  blurAverageOfPreviousPixel: 0.411
-  blurIntensity: 0.451
+  flattenIntensity: 0.356
+  blurAverageOfPreviousPixel: 0.918
+  blurIntensity: 0.707
