@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerController : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
     float FinishAttack;
     float rollDelay = 0.1f;
     float isAttackingHoldTime;
+    public VisualEffect rangeTalkVFX;
 
     void Awake()
     {
@@ -168,6 +170,7 @@ public class PlayerController : MonoBehaviour
     }
     private void AttackHandler() {
         if (isMelee) {
+            rangeTalkVFX.Stop();
             if (Input.GetMouseButtonDown(0) && Time.time > NextBasicAttack) {
                 StartCoroutine(FixRotationSeq());
                 NextBasicAttack = Time.time + basicAttackCooldown;
@@ -195,6 +198,7 @@ public class PlayerController : MonoBehaviour
                 isAttacking = true;
                 isAttackingHoldTime = Time.time + 0.66f;
                 FinishAttack = Time.time + rangeAttackDuration;
+                rangeTalkVFX.Play();
                 //print("Atacando!");
                 Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f);
                 //int lm = 1 << 11;
@@ -208,6 +212,9 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
+            }
+            else {
+                rangeTalkVFX.Stop();
             }
         }
 

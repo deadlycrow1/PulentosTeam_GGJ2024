@@ -7,6 +7,7 @@ public class EnemyAttackHelper : MonoBehaviour
     //    public EnemyBehaviour enemy;
     public float attackDmg = 10f;
     public float attackAngleRange = 0.3f;
+    public int currentAttackIndex;
     Transform t;
     float attackCD;
     private void Awake()
