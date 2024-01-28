@@ -11,6 +11,7 @@ public class Fader : MonoBehaviour
     public AnimationCurve fadeCurve;
     private void Awake() {
         instance = this;
+        img.color = Color.black;
     }
     public void FadeIn() {
         StopAllCoroutines();

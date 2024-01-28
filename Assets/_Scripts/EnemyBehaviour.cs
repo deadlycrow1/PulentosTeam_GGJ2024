@@ -6,6 +6,8 @@ using UnityEngine.VFX;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    public AudioClip[] jajasFx;
+    public AudioSource jajasAudio;
     public enum EnemyState { Idle, Walk, Attacking, Laughing };
     public bool isBoss;
     public Animator anim;
@@ -39,6 +41,8 @@ public class EnemyBehaviour : MonoBehaviour
         {
             enemyBar.SetupBar(maxDepression, depression, false);
         }
+        jajasAudio.clip = jajasFx[Random.Range(0, jajasFx.Length)];
+        jajasAudio.Play();
     }
     private void ProcessBrain()
     {
@@ -66,6 +70,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             laughingTime -= Time.deltaTime;
             enemyState = EnemyState.Laughing;
+            jajasAudio.volume = Mathf.Lerp(jajasAudio.volume, 0.5f, Time.deltaTime * 3f);
         }
         else
         {
@@ -74,6 +79,7 @@ public class EnemyBehaviour : MonoBehaviour
                 enemyState = EnemyState.Idle;
                 vfxHahas.Stop();
             }
+            jajasAudio.volume = Mathf.Lerp(jajasAudio.volume, 0f, Time.deltaTime * 3f);
         }
         AnimationHandler();
     }

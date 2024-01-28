@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
         inputVector.y = 0;
         if (moveInput != Vector2.zero)
         {
-            t.rotation = Quaternion.Slerp(t.rotation, Quaternion.LookRotation(inputVector), Time.deltaTime * 6f) ;
+            t.rotation = Quaternion.Slerp(t.rotation, Quaternion.LookRotation(inputVector), Time.deltaTime * 9f) ;
             playerRb.MovePosition(t.position + inputVector.normalized * speed * Time.deltaTime); // Actually move there
         }
     }
