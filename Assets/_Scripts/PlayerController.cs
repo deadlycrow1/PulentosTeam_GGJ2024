@@ -6,10 +6,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance;
+    public Animator anim;
     public float health = 100f;
     public bool isAlive = true;
     public bool canDrive = false;
     public bool isMelee = true;
+    public bool isAttacking = false;
     public bool isGrounded;
     public bool isDashing;
     private Rigidbody playerRb;
@@ -40,6 +42,8 @@ public class PlayerController : MonoBehaviour
     float NextBasicAttack;
     float NextSphereAttack;
     float FinishAttack;
+    float rollDelay = 0.1f;
+    float isAttackingHoldTime;
 
     void Awake()
     {
@@ -73,19 +77,17 @@ public class PlayerController : MonoBehaviour
 
         if (!isDashing && Input.GetKeyDown(KeyCode.LeftShift) && Time.time > dashCdTimer)
         {
-            dashCdTimer = Time.time + 2f;
+            dashCdTimer = Time.time + 1.5f;
             dashTime = Time.time + dashDuration;
             isDashing = true;
             dashDirection = (cachedCam.right *
             moveInput.x) + (cachedCam.forward * moveInput.y);
             dashDirection.y = 0;
+            anim.SetTrigger("Roll");
+            rollDelay = 0.1f;
         }
         if (isDashing)
         {
-            if (Time.time > dashTime)
-            {
-                isDashing = false;
-            }
             t.rotation = Quaternion.LookRotation(dashDirection);
             bool dashObstructed = false;
             int lm = 1 << 10;
@@ -95,16 +97,36 @@ public class PlayerController : MonoBehaviour
             }
             if (!dashObstructed)
             {
+                if (rollDelay > 0) {
+                    rollDelay -= Time.deltaTime;
+                    return;
+                }
                 t.position += (dashDirection.normalized * dashSpeed * Time.deltaTime);
+            }
+            if (Time.time > dashTime) {
+                isDashing = false;
             }
             return;
         }
         t.LookAt(cursorPosition);
         AttackHandler();
+        AnimationHandler();
+        if (isAttacking) {
+            if(Time.time > isAttackingHoldTime) {
+                isAttacking = false;
+            }
+        }
     }
     private void CheckCurrentWeapon()
     {
         //aca decidir animaciones y objeto a mostrar dependiendo si es melee o rango.
+    }
+    private void AnimationHandler() {
+        float tMove = 0;
+        if(moveInput != Vector2.zero) {
+            tMove = 1f;
+        }
+        anim.SetFloat("Speed", tMove, 0.15f, Time.deltaTime * 2f);
     }
     private void FixedUpdate()
     {
@@ -140,6 +162,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && Time.time > NextBasicAttack)
             {
                 NextBasicAttack = Time.time + basicAttackCooldown;
+                isAttacking = true;
+                isAttackingHoldTime = Time.time + 0.5f;
                 //print("Atacando!");
                 Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f) + (t.forward * attackSphereForwardOffset);
                 //int lm = 1 << 11;
@@ -162,6 +186,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButton(0) && Time.time > NextBasicAttack)
             {
                 NextBasicAttack = Time.time + rangeAttackCooldown;
+                isAttacking = true;
+                isAttackingHoldTime = Time.time + 0.5f;
                 FinishAttack = Time.time + rangeAttackDuration;
                 //print("Atacando!");
                 Vector3 attackSphereCenter = t.position + (Vector3.up * 0.5f);
@@ -207,6 +233,7 @@ public class PlayerController : MonoBehaviour
         if (health > 0)
         {
             health -= dmgPoints;
+            anim.SetTrigger("GetHit");
         }
         else
         {
